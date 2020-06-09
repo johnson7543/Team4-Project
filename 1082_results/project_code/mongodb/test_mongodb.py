@@ -4,7 +4,7 @@ from bson.objectid import ObjectId #這東西再透過ObjectID去尋找的時候
 
 # connection
 def runMongo(data):
-  client = MongoClient("mongodb+srv://johnson7543:jo10055096@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority")
+  client = MongoClient("mongodb+srv://johnson7543:<>@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority")
   db = client.Test
   collection = db.test
 
