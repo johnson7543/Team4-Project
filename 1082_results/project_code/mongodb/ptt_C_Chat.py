@@ -3,24 +3,7 @@ from bs4 import BeautifulSoup
 import datetime
 import json
 
-if datetime.date.today().day < 10:
-    if datetime.date.today().month < 10:
-        today = ' ' + str(datetime.date.today().month) + "/" + '0' + str(datetime.date.today().day)
-    else:
-        today = str(datetime.date.today().month) + "/" + '0' + str(datetime.date.today().day)
-else:
-    if datetime.date.today().month < 10:
-        today = ' ' + str(datetime.date.today().month) + "/" + str(datetime.date.today().day)
-    else:
-        today = str(datetime.date.today().month) + "/" + str(datetime.date.today().day)
-
-#print(today)
-
-url="https://www.ptt.cc/bbs/C_Chat/index.html"
-isToday = today #是否為今天的文
-articles = []
-
-def get_href(url):
+def get_href(url, today, articles):
     r = requests.get(url)
     soup = BeautifulSoup(r.text, "html.parser")
     results = soup.select("div.title")
@@ -70,25 +53,47 @@ def save_to_json(articles, file):
     print("今天共有：", len(articles), "篇文章")
     
     with open(file, "w", encoding = "utf-8") as fp:
-        json.dump(articles, fp, indent = 2, sort_keys = True, ensure_ascii = False)
+        json.dump(articles, fp, indent = 2, sort_keys = True, ensure_ascii = False)  #寫檔
 
-  
-while isToday == today:  #如果文章還是在今日發的
-    r = requests.get(url)
-    soup = BeautifulSoup(r.text,"html.parser")
-    btn = soup.select('div.btn-group > a') #找到換頁區的按鈕
-    up_page_href = btn[3]['href'] #上一頁是在第四個標籤
-    next_page_url = 'https://www.ptt.cc' + up_page_href
+    json_articles = json.dumps(articles)  # list to json
+    return json_articles
+
+def get_ptt(isToday, today, url, articles):
+    while isToday == today:  #如果文章還是在今日發的
+        r = requests.get(url)
+        soup = BeautifulSoup(r.text,"html.parser")
+        btn = soup.select('div.btn-group > a') #找到換頁區的按鈕
+        up_page_href = btn[3]['href'] #上一頁是在第四個標籤
+        next_page_url = 'https://www.ptt.cc' + up_page_href
     
-    isToday = get_href(url)  #每次都會回傳日期
-    url = next_page_url #上一頁
+        isToday = get_href(url, today, articles)  #每次都會回傳日期
+        url = next_page_url #上一頁
 
+    articles = sorted(articles, key = lambda k: k["tweet"], reverse = True)  #對tweet做排序
+    #for item in articles:
+    #print(articles[0])
+    #print(articles[1])
+    #print(articles[2])
 
-articles = sorted(articles, key = lambda k: k["tweet"], reverse = True)  #對tweet做排序
+    return save_to_json(articles, "articles.json")
+  
 
-#for item in articles:
-print(articles[0])
-print(articles[1])
-print(articles[2])
+def run():
+    #將日期改為01 02 ... 這種
+    if datetime.date.today().day < 10:
+        if datetime.date.today().month < 10:
+            today = ' ' + str(datetime.date.today().month) + "/" + '0' + str(datetime.date.today().day)
+        else:
+            today = str(datetime.date.today().month) + "/" + '0' + str(datetime.date.today().day)
+    else:
+        if datetime.date.today().month < 10:
+            today = ' ' + str(datetime.date.today().month) + "/" + str(datetime.date.today().day)
+        else:
+            today = str(datetime.date.today().month) + "/" + str(datetime.date.today().day)
 
-save_to_json(articles, "articles.json")
+    url="https://www.ptt.cc/bbs/C_Chat/index.html"
+    isToday = today #是否為今天的文
+    articles = [] 
+    #return get_ptt(isToday, today, url, articles)
+    get_ptt(isToday, today, url, articles)
+    return articles
