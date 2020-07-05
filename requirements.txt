@@ -2,5 +2,3 @@ line-bot-sdk
 flask
 apiai
 pymongo
-os
-
