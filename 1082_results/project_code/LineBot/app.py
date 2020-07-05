@@ -11,6 +11,7 @@ from linebot.models import (
 )
 import apiai 
 import json
+import test_mongodb
 
 app = Flask(__name__)
 
@@ -72,8 +73,10 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message 也是一個json物件(或許跟event長很像)
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
-    message = TextSendMessage(text = responseJson["result"]["parameters"]["action"]) 
-
+    message = TextSendMessage(text = responseJson["result"]["parameters"]["action"])
+    
+    test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
+    
     line_bot_api.reply_message(event.reply_token, message )
     #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
     #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
