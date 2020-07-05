@@ -75,7 +75,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
     message = TextSendMessage(text = responseJson["result"]["parameters"]["action"])
     
-    #test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
+    test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
     
     line_bot_api.reply_message(event.reply_token, message )
     #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
