@@ -20,9 +20,9 @@ ai = apiai.ApiAI('e487ae398c804714a2b714262d78a191')
 
 # Channel Access Token
 #初始化一個LineBotApi的物件
-line_bot_api = LineBotApi('XUfZsWefxi6HDwDu4AKo4Ro42rje7b/bN3qesRA5oapqJ4WDhm3oO2qZZxOY3w1YyF2v7KRZDcrm7jix7ZaLMCDslwBGDi/4Si6BTi0LhHeK8x1MSp3auGhLCWEKlLhZVf1z/efhUjvv4m1kOC0hCwdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('l8HIzKnuKYtgSCLb5VG2VcBPoaEM3xWnDZQcGwoGkBWnpV8aji5gPeKDP1kTy/CxmskDdaND9kuV05D1GDEcuUWkwnSmv2QewSuSdU/4lZtZI188/NS9YA5vVEEjI0Zo1YBa9y/pc77fUcZlQTx7EAdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('7074f0de8312b55f594705c8de705e1b')
+handler = WebhookHandler('a86154a51569e180a823c36cb81fa05d')
 
 
 def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
