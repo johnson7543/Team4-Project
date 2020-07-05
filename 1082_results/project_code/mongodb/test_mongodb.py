@@ -1,6 +1,5 @@
-# import
 from pymongo import MongoClient
-from bson.objectid import ObjectId #這東西再透過ObjectID去尋找的時候會用到
+# from bson.objectid import ObjectId #這東西再透過ObjectID去尋找的時候會用到
 
 # connection
 def runMongo(data):
