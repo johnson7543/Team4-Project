@@ -1,7 +1,7 @@
 
 
 def arrange:
-    
+    return
 
 
 def seldata(db, text):
