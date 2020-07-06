@@ -1,0 +1,6 @@
+Python
+LineBot SDK
+Dialogflow
+Heroku
+GitHub
+MongoDataBase

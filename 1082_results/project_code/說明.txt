@@ -1,0 +1,1 @@
+由於我們透過GitHub連接到Heroku，故多數與LineBot相關的程式均必須放置在第一頁的目錄，此處僅放置WebClawer，DB程式等等
