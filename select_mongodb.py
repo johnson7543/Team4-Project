@@ -1,6 +1,6 @@
 
 
-def arrange:
+def arrange():
     return
 
 
