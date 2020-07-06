@@ -25,6 +25,9 @@ line_bot_api = LineBotApi('l8HIzKnuKYtgSCLb5VG2VcBPoaEM3xWnDZQcGwoGkBWnpV8aji5gP
 handler = WebhookHandler('a86154a51569e180a823c36cb81fa05d')
 
 
+def Get_Data_FormDB(string):#把關鍵字，連接db去拿相關資料
+    return
+
 def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
 
    request = ai.text_request()
@@ -69,11 +72,15 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         
     #選擇參數text將他丟給dialogflow去解析
     responseJson = parse_user_text(event.message.text)
-    
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message 也是一個json物件(或許跟event長很像)
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
-    message = TextSendMessage(text = responseJson["result"]["parameters"]["action"])
+    
+    if '研究所' in event.message.text :
+        Get_Data_FormDB('研究所')
+    
+    #回傳訊息的製作
+    message = TextSendMessage(text = 'action : ' + responseJson["result"]["parameters"]["action"] + '\n' + '幫你找到的資料:' )
     
     test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
     
