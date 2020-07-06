@@ -67,11 +67,10 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #                    "type":"text", 
     #                    "text":"使用者傳來的文字信息內容"}}
         
-    #選擇參數"text"將他丟給Dialogflow去解析其內容
-    event_dict = json.loads(event) # event json to dict ?
+    #選擇參數"text"將他丟給Dialogflow去解析其內容t ?
     responseJson = []
     responseJson.append(parse_user_text(event.message.text)["result"]["parameters"]["action"])
-    responseJson.append(event_dict["source"]["user_id"])
+    responseJson.append(event.source.user_id)
     
     data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
