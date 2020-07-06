@@ -9,6 +9,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+import os
 import apiai 
 import json
 import test_mongodb
@@ -23,10 +24,6 @@ ai = apiai.ApiAI('e487ae398c804714a2b714262d78a191')
 line_bot_api = LineBotApi('l8HIzKnuKYtgSCLb5VG2VcBPoaEM3xWnDZQcGwoGkBWnpV8aji5gPeKDP1kTy/CxmskDdaND9kuV05D1GDEcuUWkwnSmv2QewSuSdU/4lZtZI188/NS9YA5vVEEjI0Zo1YBa9y/pc77fUcZlQTx7EAdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
 handler = WebhookHandler('a86154a51569e180a823c36cb81fa05d')
-
-
-def Get_Data_FormDB(string):#把關鍵字，連接db去拿相關資料
-    return
 
 def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
 
@@ -93,8 +90,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
     #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
     
-
-import os
+    
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
