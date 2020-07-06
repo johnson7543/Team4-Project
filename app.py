@@ -69,10 +69,10 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         
     #選擇參數"text"將他丟給Dialogflow去解析其內容
     responseJson = parse_user_text(event.message.text)
-
+    # userID = event.user_id
     data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
-    data_str = "".join(str(list(data)["action"]))
+    data_str = "".join(str(dict(data)["action"]))
     # 型別轉換 就是要打破strongly typed
     # Cursor -> list(dict) -> string
     
