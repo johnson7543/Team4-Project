@@ -72,9 +72,12 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     # userID = event.user_id
     data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
-    data_str = "".join(str(i.get('action')) for i in list(data))
+    data_str = "".join(str(i.get('action'))+'\n' for i in list(data))
     # 型別轉換 就是要打破strongly typed
     # Cursor -> list(dict) -> string
+    
+    # data_list = [element for element in list(data) if element['action'] == "考試"]
+    # 只拿aciton為考試的資料
     
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message也是一個json物件(或許跟event長很像)
