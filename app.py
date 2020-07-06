@@ -86,7 +86,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
     
     #回傳訊息的製作，更改messgae裡面text的內容
-    message = TextSendMessage(text = '你的Action : ' + responseJson[0].["result"]["parameters"]["action"] + '\n'
+    message = TextSendMessage(text = '你的Action : ' + responseJson[0]["result"]["parameters"]["action"] + '\n'
                               + '以下是我幫你找到的資料 ：\n' + data_str )
     
     

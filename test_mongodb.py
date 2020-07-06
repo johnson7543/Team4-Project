@@ -15,7 +15,8 @@ def runMongo(response, text):
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response) :
-        mydict ={"action": response["result"]["parameters"]["action"]}
+        mydict ={"action": response[0]["result"]["parameters"]["action"],
+                 "user id": response[1]["user_id"]}
         collection.insert(mydict) 
         
     return select_mongodb.seldata(db, text) # select from db.collection
