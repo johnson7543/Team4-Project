@@ -82,7 +82,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     
     #回傳訊息的製作，更改messgae裡面text的內容
     message = TextSendMessage(text = '你的Action : ' + responseJson["result"]["parameters"]["action"] + '\n' \
-                              + '以下是我幫你找到的資料 ：\n' + data['action'] )
+                              + '以下是我幫你找到的資料 ：\n' + data.fetchall() )
     
     
     line_bot_api.reply_message(event.reply_token, message )
