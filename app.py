@@ -80,7 +80,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         Get_Data_FormDB('研究所')
     
     #回傳訊息的製作
-    message = TextSendMessage(text = 'action : ' + responseJson["result"]["parameters"]["action"] + '\n' + '幫你找到的資料:' )
+    message = TextSendMessage(text = '你的Action : ' + responseJson["result"]["parameters"]["action"] + '\n' + '以下是我幫你找到的資料 : ' )
     
     test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
     
