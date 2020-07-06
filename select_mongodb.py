@@ -1,5 +1,9 @@
 
 
+def arrange:
+    
+
+
 def seldata(db, text):
 
     if '獎學金' in text:
