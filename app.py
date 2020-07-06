@@ -67,7 +67,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #                    "type":"text", 
     #                    "text":"使用者傳來的文字信息內容"}}
         
-    #選擇參數"text"將他丟給Dialogflow去解析其內容t ?
+    #選擇參數"text"將他丟給Dialogflow去解析其內容
     responseJson = []
     responseJson.append(parse_user_text(event.message.text)["result"]["parameters"]["action"])
     responseJson.append(event.source.user_id)
