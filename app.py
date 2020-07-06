@@ -72,9 +72,9 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         
     #選擇參數"text"將他丟給Dialogflow去解析其內容
     responseJson = parse_user_text(event.message.text)
-    #若是研究所相關 則呼叫FUNCTION取得資料
-    if '研究所' in event.message.text :
-        Get_Data_FormDB('研究所')
+
+    data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
+    # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
         
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message也是一個json物件(或許跟event長很像)
@@ -82,9 +82,8 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     
     #回傳訊息的製作，更改messgae裡面text的內容
     message = TextSendMessage(text = '你的Action : ' + responseJson["result"]["parameters"]["action"] + '\n' \
-                              + '以下是我幫你找到的資料 : ' )
+                              + '以下是我幫你找到的資料 ：\n' + data )
     
-    test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
     
     line_bot_api.reply_message(event.reply_token, message )
     #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
