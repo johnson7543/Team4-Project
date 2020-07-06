@@ -72,7 +72,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     # userID = event.user_id
     data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
-    data_str = "".join(str(i["action"]) for i in dict(data))
+    data_str = "".join(str(i.get('action')) for i in dict(data))
     # 型別轉換 就是要打破strongly typed
     # Cursor -> list(dict) -> string
     
@@ -81,7 +81,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
     
     #回傳訊息的製作，更改messgae裡面text的內容
-    message = TextSendMessage(text = '你的Action : ' + responseJson["result"]["parameters"]["action"] + '\n' \
+    message = TextSendMessage(text = '你的Action : ' + responseJson["result"]["parameters"]["action"] + '\n'
                               + '以下是我幫你找到的資料 ：\n' + data_str )
     
     
