@@ -10,8 +10,8 @@ def runMongo(response, text):
     # must add "retryWrites=false" at the end of the url for no reason
     
     client = pymongo.MongoClient(mongo_url)
-    db = client.heroku_95jb1hvd
-    collection = db.Test
+    db = client.Test
+    collection = db.testLineBot
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response) :
