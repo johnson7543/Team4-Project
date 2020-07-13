@@ -6,7 +6,7 @@ import select_mongodb
 # connection
 def runMongo(response, text):    
     
-    mongo_url = os.getenv('MONGOLAB_URI', 'mongodb://heroku_95jb1hvd:5mvk8kou4g9kfpl3uo2knehlmg@ds339968.mlab.com:39968/heroku_95jb1hvd?retryWrites=false')  
+    mongo_url = os.getenv('MONGO_CONNECTION', 'mongodb+srv://johnson7543:BfT5BEThq3deNBxJ@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority')  
     # must add "retryWrites=false" at the end of the url for no reason
     
     client = pymongo.MongoClient(mongo_url)
