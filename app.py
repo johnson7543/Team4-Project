@@ -71,6 +71,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     responseJson = []
     responseJson.append(parse_user_text(event.message.text)["result"]["parameters"]["action"])
     responseJson.append(event.source.user_id)
+    responseJson.append(event.message.text)
     
     
     data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
