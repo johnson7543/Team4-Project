@@ -6,6 +6,8 @@
 
 林佑任 <qwer88411@cycu.org.tw>
 
+## 暑假行程表
+https://docs.google.com/spreadsheets/d/e/2PACX-1vRX4sVlzRfR41GNDoFtq8DroDbjd4ZcbVb0L2T5MgsJnuxDMkMYTQCIbOG_4rPpHULFgFuG04Kjc5bP/pubhtml?gid=0&single=true
 
 <ol>
   <li>The end-user types or speaks an expression.</li>
