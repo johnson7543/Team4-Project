@@ -69,7 +69,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         
     #選擇參數"text"將他丟給Dialogflow去解析其內容
     responseJson = []
-    responseJson.append(parse_user_text(event.message.text)["result"]["parameters"]["action"])
+    responseJson.append(parse_user_text(event.message.text)["result"]["parameters"]["Object"])
     responseJson.append(event.source.user_id)
     responseJson.append(event.message.text)
     
@@ -77,7 +77,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
     # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
-    data_str = "".join(str(i.get('action'))+'\n' for i in list(data))
+    data_str = "".join(str(i.get('Object'))+'\n' for i in list(data))
     # 型別轉換 就是要打破strongly typed
     # Cursor -> list(dict) -> string
     

@@ -18,7 +18,7 @@ def runMongo(response, text):
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response) :
-        mydict ={"action": response[0],
+        mydict ={"target": response[0],
                  "user id": response[1],
                  "user text": response[2]}
         collection.insert(mydict) 
