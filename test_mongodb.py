@@ -24,5 +24,5 @@ def runMongo(response, text):
                  "user text": response[2]}
         collection.insert(mydict) 
         
-    return select_mongodb.seldata(db, text) # select from db.collection
+    return select_mongodb.seldata(userid, text) # select from db.collection
     
