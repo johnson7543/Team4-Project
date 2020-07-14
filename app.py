@@ -69,23 +69,20 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         
     #選擇參數"text"將他丟給Dialogflow去解析其內容
     data = parse_user_text(event.message.text)
+    responseJson = []
+    responseJson.append(event.source.user_id)
+    responseJson.append(event.message.text)
     
     if ( data["result"]["parameters"] ) :
-        responseJson = []
         responseJson.append(data["result"]["parameters"]["target"])
-        responseJson.append(event.source.user_id)
-        responseJson.append(event.message.text)
         action = parse_user_text(event.message.text)["result"]["parameters"]["action"]
          
-        data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
+        data = test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
     # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
         data_str = "".join(str(i.get('target'))+'\n' for i in list(data))
     # 型別轉換 就是要打破strongly typed
     # Cursor -> list(dict) -> string
-    
-    # data_list = [element for element in list(data) if element['action'] == "考試"]
-    # 只拿aciton為考試的資料
     
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message也是一個json物件(或許跟event長很像)
@@ -101,8 +98,10 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
     
     else:
-        message = TextSendMessage(text = '你在公三小' )
-    
+        responseJson.append("none")
+        data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
+        data_str = "".join(str(i.get('target'))+'\n' for i in list(data))
+        message = TextSendMessage( text = '你在公三小' ) 
         line_bot_api.reply_message(event.reply_token, message )
     
     
