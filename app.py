@@ -99,7 +99,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     
     else:
         responseJson.append("none")
-        data = test_mongodb.runMongo(responseJson, event.message.text) # 嘗試把dialogflow回傳的存入mongodb
+        data = test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
         data_str = "".join(str(i.get('target'))+'\n' for i in list(data))
         message = TextSendMessage( text = '你在公三小' ) 
         line_bot_api.reply_message(event.reply_token, message )
