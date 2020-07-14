@@ -15,7 +15,7 @@ def runMongo(response, text):
     userid = response[1]
     client = pymongo.MongoClient("mongodb+srv://johnson7543:BfT5BEThq3deNBxJ@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority")
     db = client.Test
-    collection = db.[str(userid)]
+    collection = db.str(userid)
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response) :
