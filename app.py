@@ -100,6 +100,11 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
     #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
     
+    else:
+        message = TextSendMessage(text = '你在公三小' )
+    
+        line_bot_api.reply_message(event.reply_token, message )
+    
     
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
