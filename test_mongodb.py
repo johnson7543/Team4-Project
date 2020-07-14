@@ -12,7 +12,7 @@ def runMongo(response):
     # Since the mlab-MongoDB will be removed from heroku app on November 10, we are now using MongoDB Atlas directly
     # Btw, there is a new app on heroku which support accessing  mongodb with no free plan, fuck you.
     
-    userid = response[1]
+    userid = response[0]
     client = pymongo.MongoClient("mongodb+srv://johnson7543:BfT5BEThq3deNBxJ@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority")
     db = client.Test
     collection = db[str(userid)]
