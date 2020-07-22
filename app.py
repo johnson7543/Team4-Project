@@ -83,7 +83,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         data_str = "".join(str(i.get('Target'))+'\n' for i in list(data))
     # 型別轉換 就是要打破strongly typed
     # Cursor -> list(dict) -> string
-        fulfi_text = "".join(str(parse_user_text(event.message.text)["fulfillmentText"]))
+        fulfi_text = "".join(str(parse_user_text(event.message.text).get('fulfillmentText'))
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message也是一個json物件(或許跟event長很像)
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
