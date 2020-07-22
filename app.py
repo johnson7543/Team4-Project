@@ -74,7 +74,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     responseJson.append(event.message.text)
     
     if ( data["result"]["parameters"] ) :
-        responseJson.append(data["result"]["parameters"]["Target"])
+        responseJson.append(str(data["result"]["parameters"]["Target"]))
         action = data["result"]["parameters"]["action"]
         print(data)
         if ( data["result"]["fulfillment"] ):
