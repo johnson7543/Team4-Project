@@ -76,15 +76,15 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     if ( data["result"]["parameters"] ) :
         responseJson.append(data["result"]["parameters"]["Target"])
         action = data["result"]["parameters"]["action"]
-        print(data)
+        # print(data)
         if ( data["result"]["fulfillment"] ):
-            fulfi_text = "".join(data["result"]['fulfillment']["speech"])
+            fulfi_text = data["result"]['fulfillment']["speech"]
         else :
             fulfi_text = ""
         data_db = test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
     # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
-        data_str = "".join(str(i.get('target')[0])+'\n' for i in list(data_db))
+        data_str = "".join(str(i.get('target'))+'\n' for i in list(data_db))
         print(type(data_str))
         print(type(fulfi_text))
     # 型別轉換 就是要打破strongly typed
@@ -94,9 +94,9 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
 
     #回傳訊息的製作，更改messgae裡面text的內容
-        message = TextSendMessage( text = '你的Action : ' + action + '\n'
-                  + '以下是我幫你找到的資料 ：\n' + str(data_str) + str(fulfi_text) )
-        
+        #message = TextSendMessage( text = '你的Action : ' + action + '\n'
+                 # + '以下是我幫你找到的資料 ：\n' + str(data_str) + str(fulfi_text) )
+        message = TextSendMessage( text = data_str + fulfi_text )
         line_bot_api.reply_message(event.reply_token, message )
     #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
     #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
