@@ -83,14 +83,14 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         data_str = "".join(str(i.get('Target'))+'\n' for i in list(data))
     # 型別轉換 就是要打破strongly typed
     # Cursor -> list(dict) -> string
-    
+        fulfi_text = "".join(str(parse_user_text(event.message.text)["fulfillmentText"]))
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message也是一個json物件(或許跟event長很像)
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
     
     #回傳訊息的製作，更改messgae裡面text的內容
         message = TextSendMessage(text = '你的Action : ' + action + '\n'
-                              + '以下是我幫你找到的資料 ：\n' + data_str + '\n' + str(parse_user_text(event.message.text)["fulfillmentText"]) )
+                              + '以下是我幫你找到的資料 ：\n' + data_str + '\n' + fulfi_text )
     
         line_bot_api.reply_message(event.reply_token, message )
     #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
