@@ -102,6 +102,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
     
     else:
+        print(data)
         responseJson.append("none")
         data = test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongod
         if ( data["result"]["fulfillment"] ):
