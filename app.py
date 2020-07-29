@@ -75,7 +75,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     
     if ( data["result"]["parameters"] ) :
         responseJson.append(data["result"]["parameters"]["Target"])
-        action = data["result"]["parameters"]["action"]
+        # action = data["result"]["parameters"]["action"]
         print(data)
         if ( data["result"]["fulfillment"] ):
             fulfi_text = data["result"]['fulfillment']["speech"]
@@ -105,7 +105,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         responseJson.append("none")
         data = test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
         data_str = "".join(str(i.get('Target'))+'\n' for i in list(data))
-        message = TextSendMessage( text = '你在' + responseJson[1]  + '三小' ) 
+        message = TextSendMessage( text = '您是在' + responseJson[1]  + '三小' ) 
         line_bot_api.reply_message(event.reply_token, message )
     
     
