@@ -103,9 +103,12 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     
     else:
         responseJson.append("none")
-        data = test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
-        data_str = "".join(str(i.get('Target'))+'\n' for i in list(data))
-        message = TextSendMessage( text = '您是在' + responseJson[1] ) 
+        data = test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongod
+        if ( data["result"]["fulfillment"] ):
+            fulfi_text = data["result"]['fulfillment']["speech"]
+        else :
+            fulfi_text = "請再說一次，收到不明回答：" + event.message.text
+        message = TextSendMessage( text = fulfi_text ) 
         line_bot_api.reply_message(event.reply_token, message )
     
     
