@@ -84,7 +84,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         data_db = test_mongodb.runMongo(responseJson) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
     # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
-        data_str = "".join(str(i.get('target'))+'\n' for i in list(data_db))
+        data_str = "".join(str(i.get('Item_name'))+'\n' for i in list(data_db))
         
     # 型別轉換 就是要打破strongly typed
     # Cursor -> list(dict) -> string
@@ -95,8 +95,8 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #回傳訊息的製作，更改messgae裡面text的內容
         #message = TextSendMessage( text = '你的Action : ' + action + '\n'
                  # + '以下是我幫你找到的資料 ：\n' + str(data_str) + str(fulfi_text) )
-        message = TextSendMessage( text = fulfi_text )
-        line_bot_api.reply_message(event.reply_token, message )
+        message = TextSendMessage( text = fulfi_text + data_str )
+        line_bot_api.reply_message( event.reply_token, message )
     #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
     #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
     #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
