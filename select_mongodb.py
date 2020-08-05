@@ -12,6 +12,8 @@ def seldata(sel_client, response, data):
         collection = db.posts
         temp = data["result"]["contexts"][0]["parameters"]["ApplicationCategory"]
         score = data["result"]["contexts"][0]["parameters"]["number"]
+        print(score)
+        print("?????????????????????????????????????????")
         if '清寒類' in temp:
             return collection.find({ "$or": [ {"Grade" : {"$gte" : score} }, {"Grade" : 'no'} ], "Apply" : {"$regex": '清寒'} }); # no parameter means all data in the collection
         else:
