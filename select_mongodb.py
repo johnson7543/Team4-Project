@@ -12,7 +12,7 @@ def seldata(sel_client, response, data):
         collection = db.posts
         temp = data["result"]["contexts"][0]["parameters"]["ApplicationCategory"]
         score = int(data["result"]["contexts"][0]["parameters"]["number"])
-        print(score)
+        print(score, temp)
         print("?????????????????????????????????????????")
         if '清寒類' in temp:
             return collection.find({ "Grade" : {"$lte" : score}, "Apply" : {"$regex": '清寒'} }); # no parameter means all data in the collection
