@@ -10,8 +10,8 @@ def seldata(sel_client, response, data):
     if '獎學金' in response[2]:
         db = sel_client.blog
         collection = db.posts
-        temp = data["context"]["parameters"]["ApplicationCategory"]
-        score = data["context"]["parameters"]["number"]
+        temp = data["contexts"]["parameters"]["ApplicationCategory"]
+        score = data["contexts"]["parameters"]["number"]
         if '清寒' in temp:
             temp = '清寒'
             return collection.find({ "Apply" : {'$regex': temp} } ); # no parameter means all data in the collection
