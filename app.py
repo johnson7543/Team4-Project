@@ -84,8 +84,8 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         message = TextSendMessage( text = fulfi_text )
         
         if 'yes' in data["result"]["metadata"]["intentName"]:
-            temp = data["result"]["parameters"]["ApplicationCategory"]
-            data_db = test_mongodb.runMongo(responseJson, temp) # 嘗試把dialogflow回傳的存入mongodb
+            
+            data_db = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
     # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
             data_str = "".join(str(i.get('Item_name'))+'\n' for i in list(data_db))
