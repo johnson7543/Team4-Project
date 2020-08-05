@@ -4,7 +4,7 @@ import pymongo
 import select_mongodb
 
 # connection
-def runMongo(response, data = ""):    
+def runMongo(response, data):    
     
     # mongo_url = os.getenv('MONGO_CONNECTION', 'mongodb+srv://johnson7543:BfT5BEThq3deNBxJ@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority')  
     # must add "retryWrites=false" at the end of the url for no reason
