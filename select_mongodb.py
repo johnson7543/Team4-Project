@@ -11,7 +11,7 @@ def seldata(sel_client, response, temp):
         db = sel_client.blog
         collection = db.posts
     
-        return collection.find({ "Apply" : {'$regex': temp}}); # no parameter means all data in the collection
+        return collection.find({ "Apply" : {'$regex': temp[0]}}); # no parameter means all data in the collection
     else:
         return
     
