@@ -5,7 +5,7 @@ def arrange():
     return
 
 
-def seldata(sel_client, collection, response):
+def seldata(sel_client, response):
 
     if '獎學金' in response[2]:
         db = sel_client.blog
