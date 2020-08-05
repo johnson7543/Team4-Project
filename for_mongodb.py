@@ -28,3 +28,5 @@ for post in client.blog.posts.find():
 
 """for post in client.blog.posts.find({"title": {"$eq": "Another post"}}):
     print(post["body"])"""
+	
+# ggg
