@@ -1,14 +1,15 @@
 
 
+
 def arrange():
     return
 
 
-def seldata(collection, response):
+def seldata(sel_client, collection, response):
 
     if '獎學金' in response[2]:
-        collection = collection # just testing if it wil work
-        # 'db.Scholarship_Info' is the correct db collection to select from
+        db = sel_client.blog
+        collection = db.posts
     
     return collection.find() # no parameter means all data in the collection
     

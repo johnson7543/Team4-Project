@@ -14,6 +14,7 @@ def runMongo(response):
     
     userid = response[0]
     client = pymongo.MongoClient("mongodb+srv://johnson7543:BfT5BEThq3deNBxJ@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority")
+    sel_client = pymongo.MongoClient("mongodb+srv://Jerry_Chang:jerry123@cluster0.mmp88.mongodb.net/Jerry_Chang?retryWrites=true&w=majority")
     db = client.Test
     collection = db[str(userid)]
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
@@ -23,7 +24,8 @@ def runMongo(response):
                  "user text": response[1],
                  "target": response[2]}
         collection.insert(mydict) 
-        return select_mongodb.seldata(collection, response) # select from db.collection
+        
+        return select_mongodb.seldata(sel_client, response) # select from db.collection
     
     
     
