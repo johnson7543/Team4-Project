@@ -4,7 +4,7 @@ import pymongo
 import select_mongodb
 
 # connection
-def runMongo(response):    
+def runMongo(response, temp = ""):    
     
     # mongo_url = os.getenv('MONGO_CONNECTION', 'mongodb+srv://johnson7543:BfT5BEThq3deNBxJ@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority')  
     # must add "retryWrites=false" at the end of the url for no reason
@@ -25,7 +25,7 @@ def runMongo(response):
                  "target": response[2]}
         collection.insert(mydict) 
         
-        return select_mongodb.seldata(sel_client, response) # select from db.collection
+        return select_mongodb.seldata(sel_client, response, temp) # select from db.collection
     
     
     
