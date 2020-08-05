@@ -11,7 +11,7 @@ def seldata(sel_client, response, data):
         db = sel_client.blog
         collection = db.posts
         temp = data["result"]["contexts"][0]["parameters"]["ApplicationCategory"]
-        score = data["result"]["contexts"][0]["parameters"]["number"]
+        score = int(data["result"]["contexts"][0]["parameters"]["number"])
         print(score)
         print("?????????????????????????????????????????")
         if '清寒類' in temp:
