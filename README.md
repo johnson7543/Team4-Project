@@ -29,4 +29,4 @@ https://docs.google.com/spreadsheets/d/e/2PACX-1vRX4sVlzRfR41GNDoFtq8DroDbjd4Zcb
   <li>Dialogflow sends the response to the end-user.</li>
   <li>The end-user sees or hears the response.</li>
 </ol>
-### *2020/8/6* 本週三到學校和同學討論，因此未參與線上討論，下週希望見到獎學金資訊的#資料庫綱要#及#連續對話串#的第一版
+### **2020/8/6** 本週三到學校和同學討論，因此未參與線上討論，下週希望見到獎學金資訊的*資料庫綱要*及*連續對話串*的第一版
