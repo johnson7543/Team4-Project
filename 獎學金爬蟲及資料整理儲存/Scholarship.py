@@ -108,7 +108,7 @@ print("長度:"+ str(len(list_href)))
 
 client = pymongo.MongoClient("mongodb+srv://Jerry_Chang:jerry123@cluster0.mmp88.mongodb.net/Jerry_Chang?retryWrites=true&w=majority")
 
-db = client.blog
+db = client.Total_Scholarship
 db.不拘.delete_many( {} )
 db.大學部.delete_many( {} )
 db.研究所.delete_many( {} )
