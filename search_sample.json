@@ -1,0 +1,60 @@
+{
+  'kind': 'customsearch#result',
+  'title': '縣市預報| 交通部中央氣象局',
+  'htmlTitle': '縣市預報| 交通部中央氣象局',
+  'link': 'https://www.cwb.gov.tw/V8/C/W/County/index.html',
+  'displayLink': 'www.cwb.gov.tw',
+  'snippet': '天氣. 縣市預報. 選擇縣市, 總覽, 基隆市, 臺北市, 新北市, 桃園市, 新竹市, 新竹縣, \n苗栗縣, 臺中市, 彰化縣, 南投縣, 雲林縣, 嘉義市, 嘉義縣, 臺南市, 高雄市, 屏東縣, \n宜蘭\xa0...',
+  'htmlSnippet': '<b>天氣</b>. 縣市預報. 選擇縣市, 總覽, 基隆市, 臺北市, 新北市, 桃園市, 新竹市, 新竹縣, <br>\n苗栗縣, 臺中市, 彰化縣, 南投縣, 雲林縣, 嘉義市, 嘉義縣, 臺南市, 高雄市, 屏東縣, <br>\n宜蘭&nbsp;...',
+  'cacheId': '-CEZG8R2qwEJ',
+  'formattedUrl': 'https://www.cwb.gov.tw/V8/C/W/County/index.html',
+  'htmlFormattedUrl': 'https://www.cwb.gov.tw/V8/C/W/County/index.html',
+  'pagemap': {
+    'cse_thumbnail': [
+      {
+        'src': 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR66H8JJzB-2lfKzWWkpH4O4Eq3DZtWcvuLk6rx0qODYoJKrKdbYHBDQiQ',
+        'width': '257',
+        'height': '196'
+      }
+    ],
+    'metatags': [
+      {
+        'dc.publisher': '交通部中央氣象局',
+        'og:image': 'https://www.cwb.gov.tw/Data/fcst_img/I04_small.jpg?',
+        'msapplication-square70x70logo': '/V8/assets/img/win10/cwbPinlogo70.png',
+        'og:site_name': '中央氣象局全球資訊網',
+        'dc.format': 'text',
+        'dc.rights': '交通部中央氣象局',
+        'og:image:type': 'image/jpg',
+        'dc.coverage.t.min': '2020-05-12',
+        'msapplication-tileimage': '/V8/assets/img/win10/cwbPinlogo.png',
+        'og:description': '縣市預報',
+        'category.cake': 'CM0',
+        'dc.type': '服務',
+        'dc.source': '交通部中央氣象局',
+        'msapplication-square310x310logo': '/V8/assets/img/win10/cwbPinlogo310.png',
+        'dc.creator': '交通部中央氣象局',
+        'dc.coverage.t.max': '2025-05-12',
+        'category.theme': '650',
+        'application-name': '中央氣象局',
+        'dc.description': '縣市預報地圖',
+        'category.service': 'EZ0',
+        'og:title': '縣市預報 - 中央氣象局全球資訊網',
+        'dc.date': '2020-05-12 13:55',
+        'msapplication-square150x150logo': '/V8/assets/img/win10/cwbPinlogo150.png',
+        'dc.contributor': '交通部中央氣象局',
+        'viewport': 'width=device-width, initial-scale=1.0',
+        'dc.title': '中央氣象局全球資訊網',
+        'dc.identifier': '315070000H',
+        'dc.subject': '天氣',
+        'og:url': 'https://www.cwb.gov.tw/V8/C/W/County/index.html',
+        'dc.language': '中文'
+      }
+    ],
+    'cse_image': [
+      {
+        'src': 'https://www.cwb.gov.tw/Data/fcst_img/I04_small.jpg?'
+      }
+    ]
+  }
+}
