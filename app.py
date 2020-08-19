@@ -84,14 +84,11 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         message = TextSendMessage( text = fulfi_text )
         
         if 'yes' in data["result"]["metadata"]["intentName"]:
-            
-            data_db = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
+    # dialogflow return 'yes' means the conversation was end.
+            data_str = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
     # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
-            data_str = "".join(str(i.get('Item_name'))+'\n' for i in list(data_db))
             message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
-    # 型別轉換 就是要打破strongly typed
-    # Cursor -> list(dict) -> string
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message也是一個json物件(或許跟event長很像)
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
