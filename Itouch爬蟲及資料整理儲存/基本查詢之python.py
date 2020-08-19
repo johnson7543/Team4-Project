@@ -10,7 +10,7 @@ from urllib.request import urlopen
 import urllib
 import bs4 # 爬蟲分析
 import re # #字串.數字的操控
-import unidecode
+#import unidecode
 
 
 """
