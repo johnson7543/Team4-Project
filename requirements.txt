@@ -4,3 +4,5 @@ apiai
 pymongo
 dnspython
 openpyxl
+pandas
+bs4
