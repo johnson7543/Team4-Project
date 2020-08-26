@@ -63,7 +63,7 @@ worksheet = workbook.get_sheet_by_name('Sheet1')
 print(worksheet.title)
 
 scholarship_list = []
-
+print(worksheet.max_row)
 for i in range( 4, worksheet.max_row ) :
 
   scholarship_dict = { "名稱": worksheet.cell( row = i, column = 3 ).value ,
@@ -102,8 +102,8 @@ for i in range( 4, worksheet.max_row ) :
       scholarship_dict["體育成績"] = 0 
       
   scholarship_list.append(scholarship_dict)
-    
-print("長度:"+ str(len(list_href)))
+print("獎學金筆數:" + str(len(scholarship_list)))
+
 #-------------------------------------------------------------------放入DataBase--------------------
 
 client = pymongo.MongoClient("mongodb+srv://Jerry_Chang:jerry123@cluster0.mmp88.mongodb.net/Jerry_Chang?retryWrites=true&w=majority")
@@ -115,17 +115,16 @@ db.研究所.delete_many( {} )
 db.清寒類.delete_many( {} )
 
 for temp in scholarship_list :
-    if temp["申請身分"] == "不拘" :
+    if "不拘" in temp["申請身分"] :
         db.不拘.insert_one( temp )
-    elif temp["申請身分"] == "大學部" :
+    if "大學部" in temp["申請身分"] :
         db.大學部.insert_one( temp )
-    elif temp["申請身分"] == "大學部大一新生清寒類" :
+    if "清寒類" in temp["申請身分"] :
         db.清寒類.insert_one( temp )
-    elif temp["申請身分"] == "大學部清寒類" :
-        db.清寒類.insert_one( temp )
-    elif temp["申請身分"] == "大學部清寒類一般類" :
-        db.清寒類.insert_one( temp )
-    elif temp["申請身分"] == "大學部研究所" :
-        db.不拘.insert_one( temp )
-    elif temp["申請身分"] == "清寒類" :
-        db.清寒類.insert_one( temp )
+    if "一般類" in temp["申請身分"] :
+        db.一般類.insert_one( temp )
+    if "研究所" in temp["申請身分"] :
+        db.研究所.insert_one( temp )
+    if "大一新生" in temp["申請身分"] :
+        db.大一新生.insert_one( temp )
+        
