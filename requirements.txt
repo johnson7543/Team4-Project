@@ -6,3 +6,4 @@ dnspython
 openpyxl
 pandas
 bs4
+lxml
