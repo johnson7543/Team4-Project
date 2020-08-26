@@ -3,3 +3,4 @@ flask
 apiai
 pymongo
 dnspython
+openpyxl
