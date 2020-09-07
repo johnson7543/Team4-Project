@@ -108,10 +108,10 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         if ( data["result"]["fulfillment"]["speech"] ):
             fulfi_text = data["result"]['fulfillment']["speech"]
             if "查詢獎學金2" in data["result"]["metadata"]["intentName"]:
-              fulfi_text = fulfi_text + confirm.get_confirm_message(data) # add confirm message
+              final_text = fulfi_text + confirm.get_confirm_message(data) # add confirm message
         else :
-            fulfi_text = "請再說一次，收到不明回答：" + event.message.text
-        message = TextSendMessage( text = fulfi_text ) 
+            final_text = "請再說一次，收到不明回答：" + event.message.text
+        message = TextSendMessage( text = final_text ) 
         line_bot_api.reply_message(event.reply_token, message )
     
     
