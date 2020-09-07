@@ -7,14 +7,11 @@ Created on Wed Jul 22 16:10:30 2020
 """
 
 import openpyxl
-import json
 import pymongo
 import pandas as pd
 import urllib.request as req #載入模組並設定別名
-from urllib.request import urlopen
-import urllib
 import bs4 # 爬蟲分析
-import re # #字串.數字的操控
+
 
 #-------------------------------------------------------------------爬蟲(取得.excel)--------------------
 res = pd.read_html("https://itouch.cycu.edu.tw/active_system/query_data/student/ssgogo.jsp")
@@ -49,21 +46,20 @@ for i in hrefList :
   if not ( "mailto" in i or "javascript" in i ) :
     list_href.append(i)
  
-print(list_href)
 #-------------------------------------------------------------------讀檔+整理資料--------------------
 
 workbook = openpyxl.load_workbook('scholarship.xlsx') # 讀入 excel 檔
 
 # 獲得所有sheet的名稱
-print("所有sheet的名稱:")
-print( workbook.get_sheet_names())
+#print("所有sheet的名稱:")
+#print( workbook.get_sheet_names())
 # 根據sheet名字獲得sheet
 worksheet = workbook.get_sheet_by_name('Sheet1')
 # 查看當前worksheet指定的此sheet名
-print(worksheet.title)
+#print(worksheet.title)
 
 scholarship_list = []
-print(worksheet.max_row)
+#print(worksheet.max_row)
 for i in range( 4, worksheet.max_row ) :
 
   scholarship_dict = { "名稱": worksheet.cell( row = i, column = 3 ).value ,
@@ -102,7 +98,7 @@ for i in range( 4, worksheet.max_row ) :
       scholarship_dict["體育成績"] = 0 
       
   scholarship_list.append(scholarship_dict)
-print("獎學金筆數:" + str(len(scholarship_list)))
+#print("獎學金筆數:" + str(len(scholarship_list)))
 
 #-------------------------------------------------------------------放入DataBase--------------------
 
@@ -112,9 +108,15 @@ db = client.Total_Scholarship
 db.不拘.delete_many( {} )
 db.大學部.delete_many( {} )
 db.研究所.delete_many( {} )
+db.一般類.delete_many( {} )
 db.清寒類.delete_many( {} )
+db.大一新生.delete_many( {} )
+db.所有類.delete_many( {} )
 
 for temp in scholarship_list :
+    
+    db.所有類.insert_one( temp )
+    
     if "不拘" in temp["申請身分"] :
         db.不拘.insert_one( temp )
     if "大學部" in temp["申請身分"] :

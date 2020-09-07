@@ -7,7 +7,7 @@ Created on Wed Aug 26 16:26:06 2020
 
 import urllib.request as req #載入模組並設定別名
 import bs4 # 爬蟲分析
-import json
+import pymongo
 
 # Google 搜尋 URL
 
@@ -25,44 +25,50 @@ def start_func ( url_type ) :
     
   root = bs4.BeautifulSoup(data, "html.parser")
   titles = root.find( name = 'table' ).find_all( name = 'a' )
-  
-  itouch_json = { "title" : "", "href" : "" }
+
+  itouch_json = { "標題" : "", "網址" : "" }
   list = []
   
+
   for i in titles :
-    print(i.string)
-  
-  for i in titles :
-    itouch_json = { "title" : i.string , "href" : i.get('href') }
+    i.string = str(i.string)
+    i.string = " ".join(i.string.split())  
+    itouch_json = { "標題" : i.string , "網址" : i.get('href') }
     list.append( itouch_json )
-    
     
   return list
 
+#----------------------存到db-----------------------------------------
+client = pymongo.MongoClient("mongodb+srv://Jerry_Chang:jerry123@cluster0.mmp88.mongodb.net/Jerry_Chang?retryWrites=true&w=majority")
+db = client.Total_Itouch
+db.Itouch_實習就業.delete_many( {} )
+db.Itouch_徵才公告.delete_many( {} )
+db.Itouch_校內徵才.delete_many( {} )
+db.Itouch_校外來文.delete_many( {} )
+db.Itouch_行政公告.delete_many( {} )
 
+choosehref = "?ann_type=1" #行政公告
+temp_list = start_func( choosehref )
+for temp in temp_list :
+    db.Itouch_行政公告.insert_one( temp )
+
+choosehref = "?ann_type=5" #徵才公告
+temp_list = start_func( choosehref )
+for temp in temp_list :
+    db.Itouch_徵才公告.insert_one( temp )
     
-#table.tboder > tr.a02 > a.href
-#titles = root.select( 'table.tboder > tr.a02 > td > div > a[href]' )
-  
-num = int(input("請選擇要查詢之類別: 1.行政公告 2.徵才公告 3.校內徵才 4.校外來文 5.實習就業 : "))
+choosehref = "?ann_type=4" #校內徵才
+temp_list = start_func( choosehref )
+for temp in temp_list :
+    db.Itouch_校內徵才.insert_one( temp )
 
-while num != 0 :
+choosehref = "?ann_type=3" #校外來文
+temp_list = start_func( choosehref )
+for temp in temp_list :
+    db.Itouch_校外來文.insert_one( temp )
 
-  if num == 1 :
-      choosehref = "?ann_type=1"
-  elif num == 2 :
-      choosehref = "?ann_type=5"
-  elif num == 3 :
-      choosehref = "?ann_type=4"
-  elif num == 4 :
-      choosehref = "?ann_type=3"
-  else :
-      choosehref = "?ann_type=10"
-      
-  temp_list = start_func( choosehref )
-  print( temp_list )
-  
-  num = int(input("請選擇要查詢之類別: 1.行政公告 2.徵才公告 3.校內徵才 4.校外來文 5.實習就業 : "))
-
-
+choosehref = "?ann_type=10" #實習就業
+temp_list = start_func( choosehref )
+for temp in temp_list :
+    db.Itouch_實習就業.insert_one( temp )
 
