@@ -5,14 +5,14 @@ def arrange_scholarship(sel_client, data):
     temp_category = ""
     temp_score = ""
   
-    if ( data["result"]["context"][0]["ApplicationCategory"] ) :
-      for temp in data["result"]["context"][0]["ApplicationCategory"] :
+    if ( data["result"]["contexts"][0]["ApplicationCategory"] ) :
+      for temp in data["result"]["contexts"][0]["ApplicationCategory"] :
         temp_category = temp_category + temp + '\n'
         
-    if ( data["result"]["context"][0]["ApplicationScore"] ) :
-        temp_score = data["result"]["context"][0]["ApplicationScore"]
-    if ( data["result"]["context"][0]["number"]):
-        score_num = int(data["result"]["context"][0]["number"])
+    if ( data["result"]["contexts"][0]["ApplicationScore"] ) :
+        temp_score = data["result"]["contexts"][0]["ApplicationScore"]
+    if ( data["result"]["contexts"][0]["number"]):
+        score_num = int(data["result"]["contexts"][0]["number"])
     
     if '清寒類' in temp_category:
         select_col = "清寒類"
