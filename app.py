@@ -97,10 +97,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #message也是一個json物件(或許跟event長很像)
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
 
-    #回傳訊息的製作，更改messgae裡面text的內容
-        #message = TextSendMessage( text = '你的Action : ' + action + '\n'
-                 # + '以下是我幫你找到的資料 ：\n' + str(data_str) + str(fulfi_text) )
-            
+    #回傳訊息的製作，更改messgae裡面text的內容        
         line_bot_api.reply_message( event.reply_token, message )
     #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
     #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
