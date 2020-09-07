@@ -13,6 +13,8 @@ import os
 import apiai 
 import json
 import test_mongodb
+import confirm
+
 
 app = Flask(__name__)
 
@@ -103,14 +105,13 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
     
     else:
-        # print(data)
-        responseJson.append("none")
-        data_db = test_mongodb.runMongo(responseJson,data) # 嘗試把dialogflow回傳的存入mongod
         if ( data["result"]["fulfillment"]["speech"] ):
             fulfi_text = data["result"]['fulfillment']["speech"]
+            if "查詢獎學金2" in data["result"]["metadata"]["intentName"]:
+              final_text = fulfi_text + confirm.get_confirm_message(data) # add confirm message
         else :
-            fulfi_text = "請再說一次，收到不明回答：" + event.message.text
-        message = TextSendMessage( text = fulfi_text ) 
+            final_text = "請再說一次，收到不明回答：" + event.message.text
+        message = TextSendMessage( text = final_text ) 
         line_bot_api.reply_message(event.reply_token, message )
     
     
