@@ -1,4 +1,4 @@
-def arrange_scholarship(sel_client, response, data):
+def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
     db = sel_client[select_db]
     text = "這樣資料很多哦 建議重新篩選"
@@ -49,7 +49,7 @@ def arrange_scholarship(sel_client, response, data):
 def seldata(sel_client, response, data):
 
     if '獎學金' in response[2]:
-        return arrange_scholarship(sel_client, response, data)
+        return arrange_scholarship(sel_client, data)
     
     elif 'itouch公告' in response[2]:
         return
