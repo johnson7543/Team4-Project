@@ -2,9 +2,17 @@ def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
     db = sel_client[select_db]
     text = "這樣資料很多哦 建議重新篩選"
-    score_num = int(data["result"]["parameters"]["number"])
-    temp_category = data["result"]["parameters"]["ApplicationCategory"]
-    temp_score = data["result"]["parameters"]["ApplicationScore"]
+    temp_category = ""
+    temp_score = ""
+  
+    if ( data["result"]["context"][0]["ApplicationCategory"] ) :
+      for temp in data["result"]["context"][0]["ApplicationCategory"] :
+        temp_category = temp_category + temp + '\n'
+        
+    if ( data["result"]["context"][0]["ApplicationScore"] ) :
+        temp_score = data["result"]["context"][0]["ApplicationScore"]
+    if ( data["result"]["context"][0]["number"]):
+        score_num = int(data["result"]["context"][0]["number"])
     
     if '清寒類' in temp_category:
         select_col = "清寒類"
