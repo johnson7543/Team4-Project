@@ -30,7 +30,7 @@ def arrange_scholarship(sel_client, data):
               data_db = collection.find( { '學業成績' : { '$lte' : score_num } } )
         else :
           data_db = collection.find() # no score filter request, get all data     
-        data_str = "".join(str(i.get('名稱'))+'\n' for i in list(data_db))
+        data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
         
         #----------------------------------------------------------------------#
         select_col = "不拘"
@@ -43,7 +43,7 @@ def arrange_scholarship(sel_client, data):
             data_db = collection.find( { '學業成績' : { '$lte' : score_num } } )
         else :
           data_db = collection.find() # no score filter request, get all data
-        data_str_all = "".join(str(i.get('名稱'))+'\n' for i in list(data_db))
+        data_str_all = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
         return data_str + data_str_all
         
     elif '學業成績' in temp_score and 0 <= score_num <= 100 :
@@ -61,7 +61,7 @@ def arrange_scholarship(sel_client, data):
             data_db = collection.find( {'$and': [ { '學業成績' : {'$lte' : score_num}, 
                                                     '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )
                     
-        data_str_all = "".join(str(i.get('名稱'))+'\n' for i in list(data_db))
+        data_str_all = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
         return data_str_all
     
     else:
@@ -74,7 +74,7 @@ def arrange_scholarship(sel_client, data):
                                                     '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] }} ] } )
           else :
             data_db = collection.find( {'$and': [ { '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )
-        data_str_all = "".join(str(i.get('名稱'))+'\n' for i in list(data_db))
+        data_str_all = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
         return data_str_all
 
 
