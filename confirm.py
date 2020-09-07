@@ -11,7 +11,8 @@ def get_confirm_message(data) :
           temp_score = temp_score + data["result"]["contexts"][0]["parameters"]["number"]
     
     temp_all = temp_category + temp_score
-    if ( temp_all ) :      
+    if ( temp_all ) :   
+      text = "請問是想要篩選以下條件嗎？" + '\n'
       return temp_category + temp_score
     else :
       text = "您沒有篩選任何條件哦？ 確定嗎？"
