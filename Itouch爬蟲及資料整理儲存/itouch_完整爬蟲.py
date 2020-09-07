@@ -9,8 +9,6 @@ import urllib.request as req #載入模組並設定別名
 import bs4 # 爬蟲分析
 import pymongo
 
-# Google 搜尋 URL
-
 def start_func ( url_type ) :
 
   url_basic ="https://itouch.cycu.edu.tw/active_system/active_group/cycu_30/announcement.jsp"
