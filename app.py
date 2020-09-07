@@ -105,8 +105,6 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
     
     else:
-        # print(data)
-        responseJson.append("none")
         if ( data["result"]["fulfillment"]["speech"] ):
             fulfi_text = data["result"]['fulfillment']["speech"]
             if "查詢獎學金2" in data["result"]["metadata"]["intentName"]:
