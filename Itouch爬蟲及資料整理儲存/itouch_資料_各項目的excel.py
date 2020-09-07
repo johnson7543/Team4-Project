@@ -4,7 +4,7 @@ Created on Wed Aug 19 16:34:22 2020
 
 @author: User
 """
-
+import pymongo
 import pandas as pd
 import urllib.request as req #載入模組並設定別名
 from urllib.request import urlopen
@@ -12,7 +12,7 @@ import urllib
 import bs4 # 爬蟲分析
 import re # #字串.數字的操控
 import unidecode
-
+import openpyxl
 
 """
 ?ann_type=1 行政公告

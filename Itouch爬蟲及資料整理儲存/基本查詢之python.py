@@ -96,7 +96,7 @@ for i in range( 27,len(nameList)) :
     f.write(nameList[i]) 
 f.close()
 
-"""
+
     
 
 for i in nameList :
@@ -118,7 +118,6 @@ sum1 = 0
 for i in range(len(targetnameList)) :
     print(targetnameList[i], end = "  " )
     print(targethrefList[i]) 
-"""
-        
+       
 
 
