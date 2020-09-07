@@ -105,7 +105,6 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     else:
         # print(data)
         responseJson.append("none")
-        data_db = test_mongodb.runMongo(responseJson,data) # 嘗試把dialogflow回傳的存入mongod
         if ( data["result"]["fulfillment"]["speech"] ):
             fulfi_text = data["result"]['fulfillment']["speech"]
         else :
