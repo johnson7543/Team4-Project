@@ -4,7 +4,8 @@ def arrange_scholarship(sel_client, data):
     text = "這樣資料很多哦 建議重新篩選"
     temp_category = ""
     temp_score = ""
-  
+    data_str = ""
+    data_str_all = ""
     if ( data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] ) :
       for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] :
         temp_category = temp_category + temp + '\n'
