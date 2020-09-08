@@ -68,8 +68,6 @@ def arrange_scholarship(sel_client, data):
         data_str_all = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
         return data_str_all
 
-
-
 def seldata(sel_client, response, data):
 
     if '獎學金' in response[2]:
