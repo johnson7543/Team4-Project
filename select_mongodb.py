@@ -2,7 +2,6 @@ import re
 def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
     db = sel_client[select_db]
-    text = "這樣資料很多哦 建議重新篩選"
     temp_category = ""
     temp_score = ""
     data_str = ""
@@ -16,7 +15,6 @@ def arrange_scholarship(sel_client, data):
     if ( data["result"]["contexts"][0]["parameters"]["number"]):
         score_num = int(data["result"]["contexts"][0]["parameters"]["number"])
     
-    print(temp_category,temp_score,score_num)
     
     if '清寒類' in temp_category:
         select_col = "清寒類"
