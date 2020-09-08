@@ -3,7 +3,7 @@ def get_confirm_message(data) :
   temp_score = ""
     
   if ( data["result"]["parameters"]["ApplicationCategory"] ) :
-    for temp in data["result"]["parameters"]["ApplicationCategory.original"] :
+    for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"] :
       temp_category = temp_category + temp + '\n'
         
   if ( data["result"]["parameters"]["ApplicationScore"] ) :
