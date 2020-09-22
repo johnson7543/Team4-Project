@@ -136,7 +136,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     "text": "分類選項"
   }
 })
-            line_bot_api.reply_message( event.reply_token, message )
+        
                
         line_bot_api.reply_message( event.reply_token, message )
         #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
