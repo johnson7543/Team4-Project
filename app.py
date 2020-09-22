@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
+    MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ButtonsTemplate,MessageTemplateAction
 )
 import os
 import apiai 
@@ -105,36 +105,27 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話
             classification()
             
-            message = {
-  "type": "template",
-  "altText": "在不支援顯示樣板的地方顯示的文字",
-  "template": {
-    "type": "buttons",
-    "text": "標題文字",
-    "actions": [
-      {
-        "type": "message",
-        "label": "第一個按鈕",
-        "text": "1"
-      },
-      {
-        "type": "message",
-        "label": "第二個按鈕",
-        "text": "2"
-      },
-      {
-        "type": "message",
-        "label": "第三個按鈕",
-        "text": "3"
-      },
-      {
-        "type": "message",
-        "label": "第四個按鈕",
-        "text": "4"
-      }
-    ]
-  }
-}
+            message = TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='Menu',
+                                text='請選擇地區',
+                                actions=[
+                                    MessageTemplateAction(
+                                        label='台北市',
+                                        text='台北市'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='台中市',
+                                        text='台中市'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='高雄市',
+                                        text='高雄市'
+                                    )
+                                ]
+                            )
+                        )
        
         line_bot_api.reply_message( event.reply_token, message )
         #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
