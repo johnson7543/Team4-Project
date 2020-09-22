@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
 )
 import os
 import apiai 
@@ -92,13 +92,55 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             data_str = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
     # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
     # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
-            message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
+    
+            #message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
+            
+            #測試
+            buttons_template_json = {
+  "type": "template",
+  "altText": "this is a buttons template",
+  "template": {
+    "type": "buttons",
+    "actions": [
+      {
+        "type": "message",
+        "label": "台中",
+        "text": "台中"
+      },
+      {
+        "type": "message",
+        "label": "台北",
+        "text": "台北"
+      },
+      {
+        "type": "message",
+        "label": "桃園",
+        "text": "桃園"
+      },
+      {
+        "type": "message",
+        "label": "其他",
+        "text": "其他"
+      }
+    ],
+    "text": "分類選項"
+  }
+}
+
+            message = TemplateSendMessage(buttons_template_json)
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
     #message也是一個json物件(或許跟event長很像)
     #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
 
     #回傳訊息的製作，更改messgae裡面text的內容        
+    
+    
+    
+    #測試
+
         line_bot_api.reply_message( event.reply_token, message )
+        #line_bot_api.reply_message( event.reply_token, message )
+        
     #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
     #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
     #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
