@@ -96,7 +96,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
             # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
             
-            message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
+            message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str + '請問想要繼續分類嗎?' )
             #回傳訊息的製作，更改messgae裡面text的內容 
             #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
             #message也是一個json物件(或許跟event長很像)
