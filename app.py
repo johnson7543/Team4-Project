@@ -104,8 +104,8 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             
         if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話
             classification()
-            classification()
-            buttons_template_json = {
+            #測試
+            buttons_template_json = '{
   "type": "template",
   "altText": "this is a buttons template",
   "template": {
@@ -134,7 +134,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     ],
     "text": "分類選項"
   }
-}
+}'
 
             message = TemplateSendMessage(buttons_template_json)
             line_bot_api.reply_message( event.reply_token, message )
