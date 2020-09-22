@@ -96,7 +96,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             #message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
             
             #測試
-            buttons_template_json = {
+            buttons_template_json = '{
   "type": "template",
   "altText": "this is a buttons template",
   "template": {
@@ -125,7 +125,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     ],
     "text": "分類選項"
   }
-}
+}'
 
             message = TemplateSendMessage(buttons_template_json)
     #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
