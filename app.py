@@ -131,7 +131,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             buttons_template = TemplateSendMessage(buttons_template_json)
             line_bot_api.reply_message( event.reply_token, message )
             
-            
+"""          
         if 'classification' in :
             classification() #把上句對話中從資料庫拿到的結果再丟去分類
             message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
@@ -148,6 +148,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         else :
             message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
             line_bot_api.reply_message( event.reply_token, message )
+"""
     else:
         if ( data["result"]["fulfillment"]["speech"] ):
             fulfi_text = data["result"]['fulfillment']["speech"]          
