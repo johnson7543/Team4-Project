@@ -40,6 +40,9 @@ def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
    return responseJson
 
 
+### def classification() #把獎學金資料的結果再分類
+
+
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
