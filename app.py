@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage
 )
 import os
 import apiai 
@@ -40,7 +40,7 @@ def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
    return responseJson
 
 
-### def classification() #把獎學金資料的結果再分類
+"""def classification() #把獎學金資料的結果再分類"""
 
 
 
@@ -96,6 +96,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             data_str = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
             # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
             # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
+            message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
             
             #測試中
             buttons_template_json = {
@@ -128,9 +129,24 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     "text": "分類選項"
   }
 }
-            buttons_template = TemplateSendMessage(buttons_template_json)
+
+            message = TemplateSendMessage(buttons_template_json)
             line_bot_api.reply_message( event.reply_token, message )
             
+    else:
+        if ( data["result"]["fulfillment"]["speech"] ):
+            fulfi_text = data["result"]['fulfillment']["speech"]          
+        else :
+            fulfi_text = "請再說一次，收到不明回答：" + event.message.text
+        message = TextSendMessage( text = fulfi_text ) 
+        line_bot_api.reply_message(event.reply_token, message )
+    
+    
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
+
 """          
         if 'classification' in :
             classification() #把上句對話中從資料庫拿到的結果再丟去分類
@@ -149,15 +165,3 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             message = TextSendMessage( text = fulfi_text + '\n'+ '-' +'\n' + data_str )
             line_bot_api.reply_message( event.reply_token, message )
 """
-    else:
-        if ( data["result"]["fulfillment"]["speech"] ):
-            fulfi_text = data["result"]['fulfillment']["speech"]          
-        else :
-            fulfi_text = "請再說一次，收到不明回答：" + event.message.text
-        message = TextSendMessage( text = fulfi_text ) 
-        line_bot_api.reply_message(event.reply_token, message )
-    
-    
-if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
