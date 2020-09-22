@@ -105,7 +105,6 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話
             classification()
             
-            """測試
 
             message = TemplateSendMessage({
   "type": "template",
@@ -137,9 +136,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     "text": "分類選項"
   }
 })
-        
-        測試"""  
-        
+              
         line_bot_api.reply_message( event.reply_token, message )
         #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
         #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
