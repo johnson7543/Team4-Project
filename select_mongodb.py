@@ -100,7 +100,6 @@ def seldata(sel_client, response, data):
         return arrange_scholarship(sel_client, data)
     
     elif '公告' in response[2]:
-        print("100000000000000000000000000000000000000000")
         return get_itouch( sel_client, data )
     
     
