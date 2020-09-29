@@ -71,7 +71,7 @@ def arrange_scholarship(sel_client, data):
 def get_itouch( sel_client, data ):
     select_db = "Total_Itouch"
     db = sel_client[select_db]
-    temp_type = data["result"]["contexts"][0]["parameters"]["AnnouncementType"]
+    temp_type = data["result"]["contexts"][0]["parameters"]["announcementtype"]
     
     select_col = temp_type # 選擇分類
     
