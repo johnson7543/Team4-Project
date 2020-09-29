@@ -159,7 +159,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             data_str = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
             # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
             # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
-            
+            print(data_str)
             message = TextSendMessage( text = data_str )
             #回傳訊息的製作，更改messgae裡面text的內容 
             #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
