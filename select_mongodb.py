@@ -98,7 +98,7 @@ def seldata(sel_client, response, data):
     if '獎學金' in response[2]:
         return arrange_scholarship(sel_client, data)
     
-    elif 'itouch公告' in response[2]:
+    elif '公告' in response[2]:
         return get_itouch( sel_client, data )
     
     
