@@ -67,13 +67,33 @@ def arrange_scholarship(sel_client, data):
           data_db = collection.find( {'$and': [ { '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )
         data_str_all = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
         return data_str_all
-
+    
+def get_itouch( sel_client, data ):
+    select_db = "Total_Itouch"
+    db = sel_client[select_db]
+    temp_type = data["result"]["contexts"][0]["parameters"]["AnnouncementType"]
+    if '行政公告' in temp_type:
+        select_col = "行政公告"
+        collection = db[select_col]
+    if '徵才公告' in temp_type:
+        select_col = "徵才公告"
+        collection = db[select_col]
+    if '校內徵才' in temp_type:
+        select_col = "校內徵才"
+        collection = db[select_col]
+    if '校外來文˙' in temp_type:
+        select_col = "校外來文"
+        collection = db[select_col]
+    if '實習就業' in temp_type:
+        select_col = "實習就業"
+        collection = db[select_col]
+    
 def seldata(sel_client, response, data):
 
     if '獎學金' in response[2]:
         return arrange_scholarship(sel_client, data)
     
     elif 'itouch公告' in response[2]:
-        return
+        return get_itouch( sel_client, data )
     
     
