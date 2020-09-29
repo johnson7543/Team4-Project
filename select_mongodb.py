@@ -94,7 +94,8 @@ def get_itouch( sel_client, data ):
     print(data_str)
     return data_str
 def seldata(sel_client, response, data):
-
+    
+    print(response[2])
     if '獎學金' in response[2]:
         return arrange_scholarship(sel_client, data)
     
