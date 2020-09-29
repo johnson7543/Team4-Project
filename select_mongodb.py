@@ -91,7 +91,7 @@ def get_itouch( sel_client, data ):
         collection = db[select_col]
         data_db = collection.find()
         data_str = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
-        print(data_str)
+    print(data_str)
     return data_str
 def seldata(sel_client, response, data):
 
