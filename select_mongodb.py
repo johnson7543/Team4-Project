@@ -74,9 +74,23 @@ def get_itouch( sel_client, data ):
     temp_type = data["result"]["contexts"][0]["parameters"]["AnnouncementType"]
     
     select_col = temp_type # 選擇分類
-    collection = db[select_col]
-    data_db = collection.find()
-    data_str = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
+    
+    if '校內/校外徵才' in select_col :
+        select_col = '校內徵才'
+        collection = db[select_col]
+        data_db = collection.find()
+        data_str1 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
+        
+        select_col = '徵才公告'
+        collection = db[select_col]
+        data_db = collection.find()
+        data_str2 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
+        data_str = data_str1 + data_str2 
+        
+    else :
+        collection = db[select_col]
+        data_db = collection.find()
+        data_str = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db))
 
     return data_str
 def seldata(sel_client, response, data):

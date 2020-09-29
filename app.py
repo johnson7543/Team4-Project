@@ -139,12 +139,8 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
                                         text='行政公告'
                                     ),
                                     MessageTemplateAction(
-                                        label='徵才公告',
-                                        text='徵才公告'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='校內徵才',
-                                        text='校內徵才'
+                                        label='校內/校外徵才',
+                                        text='校內/校外徵才'
                                     ),
                                     MessageTemplateAction(
                                         label='校外來文',
