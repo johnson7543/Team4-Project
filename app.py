@@ -135,20 +135,20 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
                                 text='請選擇公告類別',
                                 actions=[
                                     MessageTemplateAction(
-                                        label='行政公告',
-                                        text='行政公告'
+                                        label='Itouch_行政公告',
+                                        text='Itouch_行政公告'
                                     ),
                                     MessageTemplateAction(
-                                        label='校內/校外徵才',
-                                        text='校內/校外徵才'
+                                        label='Itouch_校內/校外徵才',
+                                        text='Itouch_校內/校外徵才'
                                     ),
                                     MessageTemplateAction(
-                                        label='校外來文',
-                                        text='校外來文'
+                                        label='Itouch_校外來文',
+                                        text='Itouch_校外來文'
                                     ),
                                     MessageTemplateAction(
-                                        label='實習就業',
-                                        text='實習就業'
+                                        label='Itouch_實習就業',
+                                        text='Itouch_實習就業'
                                     )                                    
                                 ]
                             )
