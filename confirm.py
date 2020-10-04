@@ -4,6 +4,8 @@ def get_confirm_message(data) :
     
   if ( data["result"]["parameters"]["ApplicationCategory"] ) :
     for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"] :
+      if "大肆" in temp :
+          temp = "大四生"
       temp_category = temp_category + temp + '\n'
         
   if ( data["result"]["parameters"]["ApplicationScore"] ) :
