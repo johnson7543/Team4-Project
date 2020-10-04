@@ -22,7 +22,7 @@ contents = {
             "type": "button",
             "action": {
               "type": "message",
-              "label": "顯示五筆就好",
+              "label": "顯示另外五筆就好",
               "text": "5"
             },
             "margin": "md",
@@ -84,7 +84,7 @@ contents = {
             "type": "button",
             "action": {
               "type": "message",
-              "label": "顯示十筆好了",
+              "label": "顯示另外十筆好了",
               "text": "10"
             },
             "margin": "md",
