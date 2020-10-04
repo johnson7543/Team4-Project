@@ -28,7 +28,6 @@ line_bot_api = LineBotApi('l8HIzKnuKYtgSCLb5VG2VcBPoaEM3xWnDZQcGwoGkBWnpV8aji5gP
 handler = WebhookHandler('a86154a51569e180a823c36cb81fa05d')
 
 def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
-
    request = ai.text_request()
    request.query = text #欲查詢的字串
    response = request.getresponse().read().decode('utf-8') #解讀API回傳的JSON檔案(用UTF8解碼)
@@ -57,7 +56,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)#每當收到LINE的訊息事件MessageEvent，且是一則文字訊息時 ，就執行下列程式碼。
 def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"標籤。
-    
+    TPE = "蛤？ 天龍人申請甚麼獎學金 = ="
     # event長這樣是一個json物件
     #    event = {"reply_token":"就是代表reply_token的一串亂碼", 
     #         "type":"message",
@@ -100,10 +99,11 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             
         if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話  
             if 'next' in data["result"]["metadata"]["intentName"]:
-                print("123")
-                #data_str = test_mongodb.runMongo(responseJson, data)
-                #print(data_str)
-                #message = TextSendMessage( text = data_str )
+                data_str = test_mongodb.runMongo(responseJson, data)
+                print(data_str)
+                if ( data["result"]["contexts"][0]["parameters"]["others"] == "台北市" ):
+                    data_str = TPE
+                message = TextSendMessage( text = data_str )
             else :
                 message = template_message.scholarship_template
                         
