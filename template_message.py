@@ -2,7 +2,7 @@ from linebot.models import (
     TemplateSendMessage,ButtonsTemplate,MessageTemplateAction
 )
 
-scholarship_templete = TemplateSendMessage(
+scholarship_template = TemplateSendMessage(
 {
   "type": "carousel",
   "contents": [
@@ -134,7 +134,7 @@ scholarship_templete = TemplateSendMessage(
 }
                         )
 
-iouch_templete = TemplateSendMessage(
+iouch_template = TemplateSendMessage(
                             alt_text='Buttons template',
                             template=ButtonsTemplate(
                                 title='公告類別',

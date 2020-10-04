@@ -14,7 +14,7 @@ import apiai
 import json
 import test_mongodb
 import confirm
-import templete_message
+import template_message
 
 app = Flask(__name__)
 
@@ -104,10 +104,10 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             
         if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話
             classification()         
-            message = templete_message.scholarship_templete
+            message = template_message.scholarship_templete
                         
         if 'Ask Itouch 1' in data["result"]["metadata"]["intentName"]:
-            message = templete_message.iouch_templete
+            message = template_message.iouch_templete
             
         if 'Ask Itouch 2' in data["result"]["metadata"]["intentName"]:
             # dialogflow return 'yes' means the conversation was end.
