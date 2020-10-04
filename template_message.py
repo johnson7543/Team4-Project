@@ -1,9 +1,9 @@
 from linebot.models import (
-    TemplateSendMessage,ButtonsTemplate,MessageTemplateAction
+    TemplateSendMessage,FlexSendMessage,ButtonsTemplate,MessageTemplateAction
 )
 
-scholarship_template = TemplateSendMessage(
-{
+scholarship_template = FlexSendMessage( alt_text='更多篩選...',
+contents = {
   "type": "carousel",
   "contents": [
     {
@@ -131,11 +131,10 @@ scholarship_template = TemplateSendMessage(
       }
     }
   ]
-}
-                        )
+})
 
 iouch_template = TemplateSendMessage(
-                            alt_text='Buttons template',
+                            alt_text='請選擇公告類別',
                             template=ButtonsTemplate(
                                 title='公告類別',
                                 text='請選擇公告類別',
