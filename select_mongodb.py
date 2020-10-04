@@ -18,9 +18,9 @@ def arrange_scholarship(sel_client, data):
         temp_score = data["result"]["contexts"][0]["parameters"]["ApplicationScore"]
     if ( data["result"]["contexts"][0]["parameters"]["number"]):
         score_num = int(data["result"]["contexts"][0]["parameters"]["number"])
-    if ( data["result"]["contexts"][0]["parameters"]["others"]):
+    if ( 'next' in data["result"]["metadata"]["intentName"] and data["result"]["contexts"][0]["parameters"]["others"]):
         others_str = data["result"]["contexts"][0]["parameters"]["others"]
-        
+
     if '清寒類' in temp_category:
         select_col = "清寒類"
         collection = db[select_col]
