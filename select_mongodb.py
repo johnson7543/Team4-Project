@@ -6,7 +6,7 @@ def arrange_scholarship(sel_client, data):
     temp_score = ""
     data_str = ""
     data_str_all = ""
-    i = 15
+    i = 10
     if ( data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] ) :
       for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] :
         temp_category = temp_category + temp + '\n'
