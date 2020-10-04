@@ -14,7 +14,7 @@ import apiai
 import json
 import test_mongodb
 import confirm
-
+import templete_message
 
 app = Flask(__name__)
 
@@ -103,56 +103,11 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
             
         if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話
-            classification()
-            
-            message = TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='Menu',
-                                text='請選擇地區',
-                                actions=[
-                                    MessageTemplateAction(
-                                        label='台北市',
-                                        text='台北市'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='台中市',
-                                        text='台中市'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='高雄市',
-                                        text='高雄市'
-                                    )
-                                ]
-                            )
-                        )
+            classification()         
+            message = templete_message.scholarship_templete
                         
         if 'Ask Itouch 1' in data["result"]["metadata"]["intentName"]:
-            message = TemplateSendMessage(
-                            alt_text='Buttons template',
-                            template=ButtonsTemplate(
-                                title='公告類別',
-                                text='請選擇公告類別',
-                                actions=[
-                                    MessageTemplateAction(
-                                        label='行政公告',
-                                        text='Itouch_行政公告'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='校內/校外徵才',
-                                        text='Itouch_校內/校外徵才'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='校外來文',
-                                        text='Itouch_校外來文'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='實習就業',
-                                        text='Itouch_實習就業'
-                                    )                                    
-                                ]
-                            )
-                        )
+            message = templete_message.iouch_templete
             
         if 'Ask Itouch 2' in data["result"]["metadata"]["intentName"]:
             # dialogflow return 'yes' means the conversation was end.
