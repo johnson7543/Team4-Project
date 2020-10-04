@@ -39,10 +39,6 @@ def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
    #print(type(responseJson["result"]["parameters"]["action"]))
    return responseJson
 
-def classification() : #繼續分類獎學金結果
-   print()
-
-
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -102,24 +98,24 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             #message也是一個json物件(或許跟event長很像)
             #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
             
-        if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話
-            classification()         
-            message = template_message.scholarship_template
+        if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話  
+            if 'next' in data["result"]["metadata"]["intentName"]:
+                print("123")
+                #data_str = test_mongodb.runMongo(responseJson, data)
+                #print(data_str)
+                #message = TextSendMessage( text = data_str )
+            else :
+                message = template_message.scholarship_template
                         
+            
         if 'Ask Itouch 1' in data["result"]["metadata"]["intentName"]:
             message = template_message.iouch_template
             
         if 'Ask Itouch 2' in data["result"]["metadata"]["intentName"]:
-            # dialogflow return 'yes' means the conversation was end.
-            data_str = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
-            # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
-            # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
+            data_str = test_mongodb.runMongo(responseJson, data)
             print(data_str)
             message = TextSendMessage( text = data_str )
-            #回傳訊息的製作，更改messgae裡面text的內容 
-            #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
-            #message也是一個json物件(或許跟event長很像)
-            #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
+            
             
         line_bot_api.reply_message( event.reply_token, message )
         #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
