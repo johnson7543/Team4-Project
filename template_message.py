@@ -137,7 +137,7 @@ iouch_template = TemplateSendMessage(
                             alt_text='請選擇公告類別',
                             template=ButtonsTemplate(
                                 title='公告類別',
-                                text='請選擇公告類別',
+                                text='請依以下分類進行選擇',
                                 actions=[
                                     MessageTemplateAction(
                                         label='行政公告',
