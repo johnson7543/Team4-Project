@@ -46,8 +46,7 @@ def arrange_scholarship(sel_client, data):
           data_db = collection.find() # no score filter request, get all data
           
         data_list_final = data_list + list(data_db)    
-        #data_list_final = shuffle(data_list_final)  
-        
+        #data_list_final = shuffle(data_list_final)      
         if "二十" in others_str :
             begin = 10
             last = 30
@@ -77,6 +76,7 @@ def arrange_scholarship(sel_client, data):
         elif "五" in others_str :
             begin = 10
             last = 15
+            
         data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
         return data_str
     
@@ -88,8 +88,16 @@ def arrange_scholarship(sel_client, data):
                                                     '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )
         else :
           data_db = collection.find( {'$and': [ { '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )
-        data_str_all = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in shuffle(list(data_db))[begin:last])
-        return data_str_all
+        data_list_final = list(data_db)
+        if "二十" in others_str :
+            begin = 10
+            last = 30
+        elif "五" in others_str :
+            begin = 10
+            last = 15
+            
+        data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+        return data_str
     
 def get_itouch( sel_client, data ):
     select_db = "Total_Itouch"
