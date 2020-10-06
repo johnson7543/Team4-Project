@@ -110,18 +110,18 @@ def get_itouch( sel_client, data ):
         select_col = 'Itouch_校內徵才'
         collection = db[select_col]
         data_db = collection.find()
-        data_str1 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:1])
+        data_str1 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:2])
         
         select_col = 'Itouch_徵才公告'
         collection = db[select_col]
         data_db = collection.find()
-        data_str2 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:1])
+        data_str2 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:2])
         data_str = data_str1 + data_str2 
         
     else :
         collection = db[select_col]
         data_db = collection.find()
-        data_str = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:1])
+        data_str = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:4])
     print(data_str)
     return data_str
 def seldata(sel_client, response, data):
