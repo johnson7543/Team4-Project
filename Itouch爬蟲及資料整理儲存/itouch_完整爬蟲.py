@@ -31,9 +31,10 @@ def start_func ( url_type ) :
   for i in titles :
     i.string = str(i.string)
     i.string = " ".join(i.string.split()) 
-    if i.string == "" :
-        i.string = "警急公告"
+
     itouch_json = { "標題" : i.string , "網址" : i.get('href') }
+    if i.itouch_json["標題"] == "" :
+        i.itouch_json["標題"] = "警急公告"
     list.append( itouch_json )
     
   return list
