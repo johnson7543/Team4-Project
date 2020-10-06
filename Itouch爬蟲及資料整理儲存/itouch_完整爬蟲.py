@@ -30,7 +30,9 @@ def start_func ( url_type ) :
 
   for i in titles :
     i.string = str(i.string)
-    i.string = " ".join(i.string.split())  
+    i.string = " ".join(i.string.split()) 
+    if i.string == None :
+        i.string = "警急公告"
     itouch_json = { "標題" : i.string , "網址" : i.get('href') }
     list.append( itouch_json )
     
