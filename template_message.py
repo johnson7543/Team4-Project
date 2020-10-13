@@ -1,5 +1,5 @@
 from linebot.models import (
-    TemplateSendMessage,FlexSendMessage,ButtonsTemplate,MessageTemplateAction
+    FlexSendMessage
 )
 
 scholarship_template = FlexSendMessage( alt_text='更多篩選...',
@@ -22,47 +22,54 @@ contents = {
             "type": "button",
             "action": {
               "type": "message",
-              "label": "顯示另外五筆就好",
-              "text": "五"
+              "label": "我想看錢最多的",
+              "text": "No money no life."
             },
             "margin": "md",
-            "style": "secondary",
-            "height": "sm"
-          },
-          {
-            "type": "button",
-            "action": {
-              "type": "message",
-              "label": "我其實是原住民",
-              "text": "原住民"
-            },
             "style": "primary",
-            "position": "relative",
-            "margin": "md",
             "height": "sm"
           },
           {
             "type": "button",
             "action": {
               "type": "message",
-              "label": "我住離島啦",
-              "text": "hello"
-            },
-            "margin": "md",
-            "style": "secondary",
-            "height": "sm"
-          },
-          {
-            "type": "button",
-            "action": {
-              "type": "message",
-              "text": "天龍人",
-              "label": "我住在台北市哦"
+              "text": "Close soon...",
+              "label": "我想看即將截止的"
             },
             "height": "sm",
             "margin": "md",
             "position": "relative",
-            "style": "primary"
+            "style": "secondary",
+            "color": "#84C1FF"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "text": "Are you SURE？",
+              "label": "我想看\"全部\"的資料"
+            },
+            "height": "sm",
+            "margin": "md",
+            "position": "relative",
+            "style": "secondary",
+            "color": "#FF79BC"
+          },
+          {
+            "type": "separator",
+            "margin": "lg"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "我想看資料來源",
+              "uri": "https://itouch.cycu.edu.tw/active_system/query_data/student/ssgogo.jsp"
+            },
+            "style": "secondary",
+            "height": "sm",
+            "margin": "lg",
+            "color": "#FFB5B5"
           }
         ],
         "backgroundColor": "#9393FF"
@@ -84,8 +91,8 @@ contents = {
             "type": "button",
             "action": {
               "type": "message",
-              "label": "顯示另外二十筆好了",
-              "text": "二十"
+              "label": "我想重新篩選",
+              "text": "Conversation reset."
             },
             "margin": "md",
             "style": "primary",
@@ -95,25 +102,14 @@ contents = {
             "type": "button",
             "action": {
               "type": "message",
-              "label": "隨機來一筆",
-              "text": "random"
-            },
-            "height": "sm",
-            "margin": "md",
-            "position": "relative",
-            "style": "secondary"
-          },
-          {
-            "type": "button",
-            "action": {
-              "type": "message",
-              "text": "取消",
+              "text": "Goodbye.",
               "label": "我不想查獎學金了"
             },
-            "style": "primary",
+            "style": "secondary",
             "position": "relative",
             "margin": "md",
-            "height": "sm"
+            "height": "sm",
+            "color": "#84C1FF"
           },
           {
             "type": "button",
@@ -124,7 +120,24 @@ contents = {
             },
             "margin": "md",
             "style": "secondary",
-            "height": "sm"
+            "height": "sm",
+            "color": "#FF79BC"
+          },
+          {
+            "type": "separator",
+            "margin": "lg"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "label": "聯絡我們",
+              "uri": "mailto:johnson7543@cycu.org.tw"
+            },
+            "style": "secondary",
+            "height": "sm",
+            "margin": "lg",
+            "color": "#FFB5B5"
           }
         ],
         "backgroundColor": "#2894FF"
