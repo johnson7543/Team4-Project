@@ -3,7 +3,7 @@ import re
 def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
     db = sel_client[select_db]
-    temp_category, temp_score, data_str, others_str = ""
+    temp_category, temp_score, data_str, others_str = "", "", "", ""
     begin, last = 0, 8
 
     if ( data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] ) :
