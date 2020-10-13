@@ -133,29 +133,72 @@ contents = {
   ]
 })
 
-iouch_template = TemplateSendMessage(
-                            alt_text='請選擇公告類別',
-                            template=ButtonsTemplate(
-                                title='公告類別',
-                                text='請依以下分類進行選擇',
-                                actions=[
-                                    MessageTemplateAction(
-                                        label='行政公告',
-                                        text='Itouch_行政公告'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='校內/校外徵才',
-                                        text='Itouch_校內/校外徵才'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='校外來文',
-                                        text='Itouch_校外來文'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='實習就業',
-                                        text='Itouch_實習就業'
-                                    )                                    
-                                ]
-                            )
-                        )
+iouch_template =  FlexSendMessage( alt_text='公告類別...',
+contents = {
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "請選擇公告類別",
+            "size": "xxl",
+            "color": "#000000"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "行政公告",
+              "text": "Itouch_行政公告"
+            },
+            "margin": "md",
+            "style": "secondary",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "校內或校外徵才",
+              "text": "Itouch_校內/校外徵才"
+            },
+            "style": "primary",
+            "position": "relative",
+            "margin": "md",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "校外來文",
+              "text": "Itouch_校外來文"
+            },
+            "margin": "md",
+            "style": "secondary",
+            "height": "sm"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "text": "Itouch_實習就業",
+              "label": "實習就業"
+            },
+            "height": "sm",
+            "margin": "md",
+            "position": "relative",
+            "style": "primary"
+          }
+        ],
+        "backgroundColor": "#9393FF"
+      }
+    }
+  ]
+})
 
