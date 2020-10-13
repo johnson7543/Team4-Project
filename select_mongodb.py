@@ -100,7 +100,7 @@ def arrange_scholarship(sel_client, data):
         data_list_final = list(data_db)
         if "money" in others_str :
           print("sorted by money")
-          data_list_final = sorted(data_list_final["金額"], reverse = True)
+          data_list_final = sorted(data_list_final.get("金額"), reverse = True)
                    
         elif "close" in others_str :
           print("sorted by date")
