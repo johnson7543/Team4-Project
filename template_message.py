@@ -92,7 +92,7 @@ contents = {
             "action": {
               "type": "message",
               "label": "我想重新篩選",
-              "text": "Conversation reset."
+              "text": "我想查獎學金"
             },
             "margin": "md",
             "style": "primary",
