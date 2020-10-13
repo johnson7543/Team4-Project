@@ -1,12 +1,11 @@
 import re
-from random import shuffle
+# from random import shuffle
 def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
     db = sel_client[select_db]
     temp_category = ""
     temp_score = ""
     data_str = ""
-    data_str_all = ""
     others_str = ""
     begin = 0
     last = 10
