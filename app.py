@@ -56,7 +56,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)#每當收到LINE的訊息事件MessageEvent，且是一則文字訊息時 ，就執行下列程式碼。
 def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"標籤。
-    egg = "乖，再過幾年就可以了哦！" + '\n' + '\n' + '\n' + '\n' + "會看到這句話的你... 不是碰到bug，" + '\n' + "就是他媽有夠閒。"
+    egg = '\n' +"乖，再過幾年就可以了哦！" + '\n\n\n\n' + "會看到這句話的你... 不是碰到bug，" + '\n\n' + "就是他媽有夠閒。"
     # event長這樣是一個json物件
     #    event = {"reply_token":"就是代表reply_token的一串亂碼", 
     #         "type":"message",
