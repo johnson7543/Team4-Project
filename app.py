@@ -56,6 +56,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)#每當收到LINE的訊息事件MessageEvent，且是一則文字訊息時 ，就執行下列程式碼。
 def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"標籤。
+    egg = "乖，再過幾年就可以了哦！" + '\n' + '\n' + '\n' + '\n' + "會看到這句話的你... 不是碰到bug，" + '\n' + "就是他媽有夠閒。"
     # event長這樣是一個json物件
     #    event = {"reply_token":"就是代表reply_token的一串亂碼", 
     #         "type":"message",
@@ -89,8 +90,15 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             data_str = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
             # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
             # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
+            wtf = ""
+            for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] :
+              if "高中" in temp :
+                wtf = egg
             
-            message = TextSendMessage( text = fulfi_text + '\n'+ '-' + '\n' + data_str + '\n' + '這有可能不是全部的結果，' + '\n' + '不過我們還提供了額外方法，請問要繼續分類嗎？' )
+            if ( wtf ) :
+              message = TextSendMessage( text = wtf ) 
+            else :
+              message = TextSendMessage( text = fulfi_text + '\n'+ '-' + '\n' + data_str + '\n' + '這有可能不是全部的結果，' + '\n' + '不過我們還提供了額外方法，請問要繼續分類嗎？' )
             #回傳訊息的製作，更改messgae裡面text的內容 
             #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
             #message也是一個json物件(或許跟event長很像)
