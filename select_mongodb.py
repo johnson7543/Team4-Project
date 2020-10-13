@@ -3,12 +3,9 @@ import re
 def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
     db = sel_client[select_db]
-    temp_category = ""
-    temp_score = ""
-    data_str = ""
-    others_str = ""
-    begin = 0
-    last = 10
+    temp_category, temp_score, data_str, others_str = ""
+    begin, last = 0, 8
+
     if ( data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] ) :
       for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] :
         temp_category = temp_category + temp + '\n'
@@ -46,14 +43,20 @@ def arrange_scholarship(sel_client, data):
           
         data_list_final = data_list + list(data_db)    
         #data_list_final = shuffle(data_list_final)      
-        if "二十" in others_str :
-            begin = 10
-            last = 30
-        elif "五" in others_str :
-            begin = 10
-            last = 15
-            
-        data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+        if "money" in others_str :
+          print("sorted by money")
+          data_list_final = sorted(data_list_final('金額'), reverse = True)
+                   
+        elif "close" in others_str :
+          print("sorted by date")
+          data_list_final = sorted(data_list_final('截止日期'))
+
+        if "sure" in others_str :
+          print("print all data")
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final)  # print all
+        else :
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+        
         return data_str
         
     elif '學業成績' in temp_score and 0 <= score_num <= 100 :
