@@ -13,7 +13,7 @@ def get_confirm_message(data) :
   if ( data["result"]["parameters"]["ApplicationScore"] ) :
         temp_score = data["result"]["parameters"]["ApplicationScore"]
   if ( data["result"]["parameters"]["number"]):
-          temp_score = str(temp_score.item()) + str(data["result"]["parameters"]["number"])
+          temp_score = " ".join(temp_score) + str(data["result"]["parameters"]["number"])
     
   temp_all = temp_category + temp_score
 
