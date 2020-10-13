@@ -10,8 +10,9 @@ def get_confirm_message(data) :
       if "大醫生" in temp :
           temp = "大一生"      
       temp_category = temp_category + temp + '\n'
-      
-    if "高中" in data["result"]["parameters"]["ApplicationCategory"] :
+    
+    for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] :
+      if "高中" in temp :
         wtf = "乖，再過幾年就可以了哦" + '\n\n' + "會看到這句話的你... 不是碰到bug，" + '\n\n' + "就是他媽有夠閒。"
         
         
