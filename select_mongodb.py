@@ -101,11 +101,11 @@ def arrange_scholarship(sel_client, data):
         
         data_list_final = list(data_db)
         if "money" in others_str :
-          print("sorted by money")
+          print("else-----sorted by money")
           data_list_final = sorted(json.load(data_list_final)["金額"], reverse = True)
                    
         elif "close" in others_str :
-          print("sorted by date")
+          print("else-----sorted by date")
           data_list_final = sorted(data_list_final["截止日期"])
 
         if "sure" in others_str :
