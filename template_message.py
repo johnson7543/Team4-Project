@@ -102,7 +102,7 @@ contents = {
             "type": "button",
             "action": {
               "type": "message",
-              "text": "Goodbye.",
+              "text": "Cancelled.",
               "label": "我不想查獎學金了"
             },
             "style": "secondary",
