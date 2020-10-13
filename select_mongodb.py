@@ -61,11 +61,14 @@ def arrange_scholarship(sel_client, data):
           print("sorted by date")
           data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
 
-        if "sure" in others_str :
+        if "all_data" in others_str :
           print("print all data")
           data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final)  # print all
         else :
-          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+          if "money" in others_str :
+            data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('金額'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+          else :
+            data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
         
         return data_str
         
@@ -91,7 +94,7 @@ def arrange_scholarship(sel_client, data):
           print("sorted by date")
           data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
 
-        if "sure" in others_str :
+        if "all_data" in others_str :
           print("print all data")
           data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final)  # print all
         else :
@@ -117,7 +120,7 @@ def arrange_scholarship(sel_client, data):
           print("sorted by date")
           data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
 
-        if "sure" in others_str :
+        if "all_data" in others_str :
           print("print all data")
           data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final)  # print all
         else :
