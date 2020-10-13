@@ -29,7 +29,11 @@ def arrange_scholarship(sel_client, data):
             else :
               data_db = collection.find( { '學業成績' : { '$lte' : score_num } } )
         else :
-          data_db = collection.find() # no score filter request, get all data     
+          if '大學部' or '研究所' in temp_category :
+            data_db = collection.find( {'$and': [ {"申請身分" : { '$not' : {'$regex': '大一'} } } ] } )
+          else :
+            data_db = collection.find() # no score filter request, get all data   
+            
         data_list = list(data_db)        
         #----------------------------------------------------------------------#
         select_col = "不拘"
@@ -41,17 +45,21 @@ def arrange_scholarship(sel_client, data):
           else :
             data_db = collection.find( { '學業成績' : { '$lte' : score_num } } )
         else :
-          data_db = collection.find() # no score filter request, get all data
+          if '大學部' or '研究所' in temp_category :
+            data_db = collection.find( {'$and': [ {"申請身分" : { '$not' : {'$regex': '大一'} } } ] } )
+          else :
+            data_db = collection.find() # no score filter request, get all data  
           
         data_list_final = data_list + list(data_db)    
-        #data_list_final = shuffle(data_list_final)      
+        #data_list_final = shuffle(data_list_final)   
+        
         if "money" in others_str :
           print("sorted by money")
-          data_list_final = sorted(data_list_final["金額"], reverse = True)
+          data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
                    
         elif "close" in others_str :
           print("sorted by date")
-          data_list_final = sorted(data_list_final["截止日期"])
+          data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
 
         if "sure" in others_str :
           print("print all data")
@@ -74,13 +82,14 @@ def arrange_scholarship(sel_client, data):
             data_db = collection.find( {'$and': [ { '學業成績' : {'$lte' : score_num}, 
                                                     '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )                    
         data_list_final = list(data_db)
+        
         if "money" in others_str :
           print("sorted by money")
-          data_list_final = sorted(data_list_final["金額"], reverse = True)
+          data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
                    
         elif "close" in others_str :
           print("sorted by date")
-          data_list_final = sorted(data_list_final["截止日期"])
+          data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
 
         if "sure" in others_str :
           print("print all data")
@@ -101,12 +110,12 @@ def arrange_scholarship(sel_client, data):
         
         data_list_final = list(data_db)
         if "money" in others_str :
-          print("else-----sorted by money")
+          print("sorted by money")
           data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
                    
         elif "close" in others_str :
-          print("else-----sorted by date")
-          data_list_final = sorted(data_list_final["截止日期"])
+          print("sorted by date")
+          data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
 
         if "sure" in others_str :
           print("print all data")
@@ -143,7 +152,6 @@ def get_itouch( sel_client, data ):
     return data_str
 def seldata(sel_client, response, data):
     
-    print(response[2])
     if '獎學金' in response[2]:
         return arrange_scholarship(sel_client, data)
     
