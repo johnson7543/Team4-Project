@@ -1,25 +1,24 @@
 import re
-import json
 
-# from random import shuffle
 def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
     db = sel_client[select_db]
     temp_category, temp_score, data_str, others_str = "", "", "", ""
-    begin, last = 0, 8
-
+    begin, last = 0, 8  # used to control how many data should print
+    score_num = 0
+    
     if ( data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] ) :
       for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] :
         temp_category = temp_category + temp + '\n'
         
     if ( data["result"]["contexts"][0]["parameters"]["ApplicationScore"] ) :
         temp_score = data["result"]["contexts"][0]["parameters"]["ApplicationScore"]
-    if ( data["result"]["contexts"][0]["parameters"]["number"]):
+    if ( data["result"]["contexts"][0]["parameters"]["number"] ):
         score_num = int(data["result"]["contexts"][0]["parameters"]["number"])
     if ( 'next' in data["result"]["metadata"]["intentName"] and data["result"]["contexts"][0]["parameters"]["others"]):
         others_str = data["result"]["contexts"][0]["parameters"]["others"]
 
-    if '清寒類' in temp_category:
+    if '清寒類' in temp_category :
         select_col = "清寒類"
         collection = db[select_col]
         
@@ -102,15 +101,20 @@ def arrange_scholarship(sel_client, data):
         
         return data_str
     
-    else:
+    else :  # 當沒有說是清寒和報告成績
         select_col = "所有類" # all data collection
         collection = db[select_col]
-        if '大學部' or '研究所' in temp_category :
+        if '大學部' or '研究所' in temp_category :  # 沒有說是清寒和報告成績的非大一生 (大二~四、研究生)
           data_db = collection.find( {'$and': [ { '申請身分' : { '$not' : {'$regex': '大一'} },
                                                     '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )
-        else :
+        else :  # 這邊預計要有"完全不篩選"的路線(對話尚未設計)
+          # if 不篩選
+          # 拿出所有資料 並隨機排序
+          
+          # else
           data_db = collection.find( {'$and': [ { '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )
-        
+          # 沒有說是清寒和報告成績的大一生
+          
         data_list_final = list(data_db)
         if "money" in others_str :
           print("sorted by money")
