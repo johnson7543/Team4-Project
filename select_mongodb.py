@@ -87,7 +87,7 @@ def arrange_scholarship(sel_client, data):
                                                     '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )                    
         data_list_final = list(data_db)
         
-         if "money" in others_str :
+        if "money" in others_str :
           print("sorted by money")
           data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
           data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('金額'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
