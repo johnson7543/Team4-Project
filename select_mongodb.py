@@ -1,4 +1,5 @@
 import re
+import random
 
 def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
@@ -55,18 +56,19 @@ def arrange_scholarship(sel_client, data):
         if "money" in others_str :
           print("sorted by money")
           data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('金額'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
                    
         elif "close" in others_str :
           print("sorted by date")
           data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
-
-        if "all_data" in others_str :
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('截止日期'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+          
+        elif "all_data" in others_str :
           print("print all data")
-          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final)  # print all
+          random.shuffle(data_list_final)
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final )
+         
         else :
-          if "money" in others_str :
-            data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('金額'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
-          else :
             data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
         
         return data_str
@@ -85,19 +87,23 @@ def arrange_scholarship(sel_client, data):
                                                     '申請資格' : {'$nin': [ re.compile(u'清寒'),re.compile(u'低收'),re.compile(u'弱勢'),re.compile(u'急難') ] } } ] } )                    
         data_list_final = list(data_db)
         
-        if "money" in others_str :
+         if "money" in others_str :
           print("sorted by money")
           data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('金額'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
                    
         elif "close" in others_str :
           print("sorted by date")
           data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
-
-        if "all_data" in others_str :
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('截止日期'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+          
+        elif "all_data" in others_str :
           print("print all data")
-          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final)  # print all
+          random.shuffle(data_list_final)
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final )
+         
         else :
-          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+            data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
         
         return data_str
     
@@ -116,19 +122,24 @@ def arrange_scholarship(sel_client, data):
           # 沒有說是清寒和報告成績的大一生
           
         data_list_final = list(data_db)
-        if "money" in others_str :
+        
+         if "money" in others_str :
           print("sorted by money")
           data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('金額'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
                    
         elif "close" in others_str :
           print("sorted by date")
           data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
-
-        if "all_data" in others_str :
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('截止日期'))+'\n' + str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+          
+        elif "all_data" in others_str :
           print("print all data")
-          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final)  # print all
+          random.shuffle(data_list_final)
+          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final )
+         
         else :
-          data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
+            data_str = "".join(str(i.get('名稱'))+'\n'+ str(i.get('網址'))+'\n\n' for i in data_list_final[begin:last])
      
         return data_str
     

@@ -7,7 +7,6 @@ import get_user_profile
 import pytz
 from datetime import datetime
 
-
 # connection
 def runMongo(response, data):    
     
@@ -26,6 +25,7 @@ def runMongo(response, data):
     
     if (response):
         profile = get_user_profile.getProfile(userid)
+        print(profile)
         #profile_name = str(profile['displayName'])
         #profile_photo = str(profile['pictureUrl'])
         

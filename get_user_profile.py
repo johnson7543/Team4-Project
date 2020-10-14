@@ -11,5 +11,4 @@ def getProfile( userid ) :
     # error handle
     profile = e 
 
-  print( profile )
   return profile
