@@ -39,7 +39,6 @@ def runMongo(response, data):
           
         mydict = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                    "user id" : userid,
-                   "user frofile" : str(profile),
                    "user name" : profile_name,
                    "user photo" : profile_photo,
                    "user text" : response[1],
