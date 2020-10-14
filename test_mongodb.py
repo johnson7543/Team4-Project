@@ -24,10 +24,14 @@ def runMongo(response, data):
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response):
-        profile = dict(get_user_profile.getProfile(userid))
+        profile = get_user_profile.getProfile(userid)
         print(profile)
-        profile_name = str(profile['displayName'])
-        profile_photo = str(profile['pictureUrl'])
+        print()
+        profile = str(get_user_profile.getProfile(userid))
+        print(profile)
+        
+        #profile_name = str(profile['displayName'])
+        #profile_photo = str(profile['pictureUrl'])
         
         if ( data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"] ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"])
@@ -37,8 +41,8 @@ def runMongo(response, data):
         mydict = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                    "user id" : userid,
                    "user frofile" : str(profile),
-                   "user name" : profile_name,
-                   "user photo" : profile_photo,
+                   #"user name" : profile_name,
+                   #"user photo" : profile_photo,
                    "user text" : response[1],
                    "target": response[2],
                    "info" : info
