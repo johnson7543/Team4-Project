@@ -30,9 +30,8 @@ def runMongo(response, data):
         print()
         
         profile_photo = str(profile.picture_url)
-        profile_name = str(profile['display_name'])
-
-        
+        profile_name = str(profile.display_name)
+      
         if ( data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"] ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"])
         else :
