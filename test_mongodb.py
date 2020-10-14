@@ -21,16 +21,16 @@ def runMongo(response, data):
     client = pymongo.MongoClient("mongodb+srv://johnson7543:BfT5BEThq3deNBxJ@cluster0-84ii5.mongodb.net/Test?retryWrites=true&w=majority")
     sel_client = pymongo.MongoClient("mongodb+srv://Jerry_Chang:jerry123@cluster0.mmp88.mongodb.net/Jerry_Chang?retryWrites=true&w=majority")
     db = client['User-data']
-    collection = db[str(userid)]
+    collection = db[userid]
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response):
-        profile = get_user_profile.getProfile(response[0])
-        profile_name = str(profile["displayName"])
-        profile_photo = str(profile["pictureUrl"])
+        profile = get_user_profile.getProfile(userid)
+        profile_name = str(profile('displayName'))
+        profile_photo = str(profile('pictureUrl'))
         
         mydict = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
-                   "user id" : response[0],
+                   "user id" : userid,
                    "user name" : profile_name,
                    "user photo" : profile_photo,
                    "user text" : response[1],
