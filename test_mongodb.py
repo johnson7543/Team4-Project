@@ -26,6 +26,7 @@ def runMongo(response, data):
     if (response):
         profile = get_user_profile.getProfile(userid)
         print(profile)
+        print(type(profile))
         print()
         profile = str(get_user_profile.getProfile(userid))
         print(profile)
