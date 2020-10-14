@@ -1,8 +1,8 @@
-from line-bot-sdk import LineBotApi
+from linebot import LineBotApi
 from linebot.exceptions import LineBotApiError
 
 
-def getProfile( userid = 'U4e235d023391dd4866a3032722640e62'  ) :
+def getProfile( userid = ''  ) :
   line_bot_api = LineBotApi('l8HIzKnuKYtgSCLb5VG2VcBPoaEM3xWnDZQcGwoGkBWnpV8aji5gPeKDP1kTy')
 
   try:
@@ -13,4 +13,4 @@ def getProfile( userid = 'U4e235d023391dd4866a3032722640e62'  ) :
     profile = e 
 
   print( profile )
-  #return profile
+  return profile
