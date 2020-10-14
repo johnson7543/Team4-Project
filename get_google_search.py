@@ -6,7 +6,7 @@ API_KEY = "AIzaSyD0Jz7sfKdq_vJI21azx4Rr67_6Ew3xio4"
 SEARCH_ENGINE_ID = "011581237149803790891:kvvffq2br44"
 # the search query you want
 def get_search_result( query ) :
-  query = 'iphone 12'
+
 # using the first page
   page = 1
 # constructing the URL
@@ -49,9 +49,7 @@ def get_search_result( query ) :
     #print("Description:", snippet)
     #print("URL:", link, "\n")
     
-    
 
-get_search_result( query = 'iphone' )
     
 
 
