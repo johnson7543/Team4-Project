@@ -13,17 +13,18 @@ import os
 import apiai 
 import json
 import test_mongodb
-import confirm
+import get_confirm_message
 import template_message
 
 app = Flask(__name__)
 
-#Dialogflow的key
+#Dialogflow key
 ai = apiai.ApiAI('e487ae398c804714a2b714262d78a191')
 
 # Channel Access Token
-#初始化一個LineBotApi的物件
+# 初始化一個LineBotApi的物件
 line_bot_api = LineBotApi('l8HIzKnuKYtgSCLb5VG2VcBPoaEM3xWnDZQcGwoGkBWnpV8aji5gPeKDP1kTy/CxmskDdaND9kuV05D1GDEcuUWkwnSmv2QewSuSdU/4lZtZI188/NS9YA5vVEEjI0Zo1YBa9y/pc77fUcZlQTx7EAdB04t89/1O/w1cDnyilFU=')
+
 # Channel Secret
 handler = WebhookHandler('a86154a51569e180a823c36cb81fa05d')
 
@@ -79,7 +80,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         if ( data["result"]["fulfillment"] ):
             fulfi_text = data["result"]['fulfillment']["speech"]
             if "查詢獎學金2" == data["result"]["metadata"]["intentName"]:
-              fulfi_text = fulfi_text + confirm.get_confirm_message(data) # add confirm message
+              fulfi_text = fulfi_text + get_confirm_message.get_message(data) # add confirm message
         else :
             fulfi_text = ""
         

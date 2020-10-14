@@ -1,4 +1,4 @@
-def get_confirm_message(data) :
+def get_message(data) :
   temp_category = ""
   temp_score = ""
 
