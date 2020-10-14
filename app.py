@@ -137,7 +137,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         else :
             userName = get_user_profile.getProfile(event.source.user_id).display_name
             fulfi_text_result = get_google_search.get_search_result(event.message.text)
-            fulfi_text = '-' + '\n' + '嗨！ ' + userName + '\n' + '你可能會想看這個：' + '\n\n' +  fulfi_text_result[0] + '\n' + fulfi_text_result[1] + '\n' + fulfi_text_result[2]
+            fulfi_text = '-' + '\n' + '嗨！ ' + userName + '\n' + '你可能會想看這個：' + '\n\n' +  fulfi_text_result[0] + '\n' + fulfi_text_result[1] + '\n\n' + fulfi_text_result[2]
             # fulfi_text = "Exception : " + event.message.text + "\n" + "試著重新問我一些問題吧" + "\n"
         message = TextSendMessage( text = fulfi_text ) 
         line_bot_api.reply_message(event.reply_token, message )
