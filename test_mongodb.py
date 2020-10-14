@@ -25,12 +25,18 @@ def runMongo(response, data):
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response):
-        profile = str(get_user_profile.getProfile(response[0]))
-        mydict ={"time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
-                 "user id": response[0],
-                 "user name": profile,
-                 "user text": response[1],
-                 "target": response[2]}
+        profile = list(get_user_profile.getProfile(response[0]))
+        profile_name = "".join(str(profile.displayName))
+        profile_photo = "".join(str(profile.pictureUrl))
+        
+        mydict = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
+                   "user id" : response[0],
+                   "user name" : profile_name,
+                   "user photo" : profile_photo,
+                   "user text" : response[1],
+                   "target": response[2],
+                   "info" : str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"])
+                  }
         
         collection.insert(mydict) 
         
