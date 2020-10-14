@@ -26,13 +26,14 @@ def runMongo(response, data):
     
     if (response):
         profile = get_user_profile.getProfile(userid)
-        profile_name = str(profile('displayName'))
-        profile_photo = str(profile('pictureUrl'))
+        #profile_name = str(profile['displayName'])
+        #profile_photo = str(profile['pictureUrl'])
         
         mydict = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                    "user id" : userid,
-                   "user name" : profile_name,
-                   "user photo" : profile_photo,
+                   "user frofile" : str(profile),
+                   #"user name" : profile_name,
+                   #"user photo" : profile_photo,
                    "user text" : response[1],
                    "target": response[2],
                    "info" : str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"])
