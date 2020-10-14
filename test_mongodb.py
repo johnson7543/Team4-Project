@@ -2,6 +2,8 @@
 # import os
 import pymongo
 import select_mongodb
+from datetime import datetime
+
 
 # connection
 def runMongo(response, data):    
@@ -20,7 +22,9 @@ def runMongo(response, data):
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response):
-        mydict ={"user id": response[0],
+        
+        mydict ={"time": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                 "user id": response[0],
                  "user text": response[1],
                  "target": response[2]}
         collection.insert(mydict) 
