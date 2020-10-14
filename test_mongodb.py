@@ -25,10 +25,10 @@ def runMongo(response, data):
     # mydict = { "name": "YuKai Wang", "Email": "johnson7543@cycu.org.tw", "brith": "1998/09/21" }
     
     if (response):
-        
+        projile = get_user_profile.getProfile(response[0])
         mydict ={"time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                  "user id": response[0],
-                 "user name": get_user_profile.getProfile(response[0]).displayName,
+                 "user name": profile,
                  "user text": response[1],
                  "target": response[2]}
         
