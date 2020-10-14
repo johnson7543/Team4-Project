@@ -29,18 +29,23 @@ def get_search_result( query ) :
     return result
     
     # get the page title
-    title = search_item.get("title")
-    # page snippet
-    snippet = search_item.get("snippet")
-    # alternatively, you can get the HTML snippet (bolded keywords)
+    #title = search_item.get("title")
+    
+    # page snippet   
+    #snippet = search_item.get("snippet")
+    
+    # alternatively, you can get the HTML snippet (bolded keywords)    
     #html_snippet = search_item.get("htmlSnippet")
-    # extract the page url
-    link = search_item.get("link")
+    
+    # extract the page url    
+    #link = search_item.get("link")
+    
     # print the results
-    print("="*10, f"Result #{i+start-1}", "="*10)
-    print("Title:", title)
-    print("Description:", snippet)
-    print("URL:", link, "\n")
+    
+    #print("="*10, f"Result #{i+start-1}", "="*10)
+    #print("Title:", title)
+    #print("Description:", snippet)
+    #print("URL:", link, "\n")
     
     
 
