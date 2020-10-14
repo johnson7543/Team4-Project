@@ -3,6 +3,8 @@
 import pymongo
 import select_mongodb
 import get_user_profile
+
+import pytz
 from datetime import datetime
 
 
@@ -24,11 +26,12 @@ def runMongo(response, data):
     
     if (response):
         
-        mydict ={"time": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        mydict ={"time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                  "user id": response[0],
                  "user name": get_user_profile.getProfile(response[0]).displayName,
                  "user text": response[1],
                  "target": response[2]}
+        
         collection.insert(mydict) 
         
         return select_mongodb.seldata(sel_client, response, data) # select from db.collection
