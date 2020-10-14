@@ -2,6 +2,7 @@
 # import os
 import pymongo
 import select_mongodb
+import get_user_profile
 from datetime import datetime
 
 
@@ -25,6 +26,7 @@ def runMongo(response, data):
         
         mydict ={"time": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                  "user id": response[0],
+                 "user name": get_user_profile.getProfile(response[0]).displayName,
                  "user text": response[1],
                  "target": response[2]}
         collection.insert(mydict) 
