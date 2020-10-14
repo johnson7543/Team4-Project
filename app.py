@@ -14,6 +14,7 @@ import apiai
 import json
 import test_mongodb
 import get_confirm_message
+import get_google_search
 import template_message
 
 app = Flask(__name__)
@@ -133,6 +134,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         if ( data["result"]["fulfillment"]["speech"] ):
             fulfi_text = data["result"]['fulfillment']["speech"]          
         else :
+            fulfi_text = get_google_search.get_google_search(event.message.text)
             fulfi_text = "Exception : " + event.message.text + "\n" + "試著重新問我一些問題吧" + "\n"
         message = TextSendMessage( text = fulfi_text ) 
         line_bot_api.reply_message(event.reply_token, message )
