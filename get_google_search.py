@@ -6,7 +6,7 @@ API_KEY = "AIzaSyD0Jz7sfKdq_vJI21azx4Rr67_6Ew3xio4"
 SEARCH_ENGINE_ID = "011581237149803790891:kvvffq2br44"
 # the search query you want
 def get_search_result( query ) :
-
+  query = 'iphone 12'
 # using the first page
   page = 1
 # constructing the URL
@@ -22,10 +22,12 @@ def get_search_result( query ) :
   search_items = data.get("items")
 # iterate over 10 results found
   result = []
-  for i, search_item in enumerate(search_items, start=1):
-    
+  for i, search_item in enumerate(search_items, start=1) :  
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
+    result.append(search_item.get("pagemap")["cse_image"][0]["src"])
+    print (result[0])
+    print (result[2])
     return result
     
     # get the page title
@@ -49,7 +51,7 @@ def get_search_result( query ) :
     
     
 
-    
+get_search_result( query = 'iphone' )
     
 
 
