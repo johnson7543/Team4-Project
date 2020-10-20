@@ -49,4 +49,4 @@ def get_search_result( query ) :
 
     
 
-get_search_result( "iphone 12" )
+# get_search_result( "iphone 12" )
