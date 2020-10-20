@@ -19,7 +19,8 @@ def get_search_result( query, userid ) :
     i += 1
     if i == 4 :
         break
-    if query[0] in search_item.get("title") and not( "Facebook" in search_item.get("title" )) :  # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
+    if query[0] in search_item.get("title") and not( "facebook" in search_item.get("link") ) and not( "instagram" in search_item.get("link") ) :
+      # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
       result.append(search_item.get("title"))
       result.append(search_item.get("link"))
       if search_item.get("link")[4] != 's' :
@@ -41,7 +42,7 @@ def get_search_result( query, userid ) :
     result = []
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
-    if search_item.get("link")[4] == 's' and not( "Facebook" in search_item.get("title") ) :
+    if search_item.get("link")[4] == 's' and not( "facebook" in search_item.get("link") ) and not( "instagram" in search_item.get("link") ) :
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           result.append(search_item["pagemap"]["cse_image"][0]["src"])
