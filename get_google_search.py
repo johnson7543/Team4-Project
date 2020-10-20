@@ -1,11 +1,11 @@
 import requests
-
+import make_flex_search_result
 # get the API KEY here: https://developers.google.com/custom-search/v1/overview
 API_KEY = "AIzaSyD0Jz7sfKdq_vJI21azx4Rr67_6Ew3xio4"
 # get your Search Engine ID on your CSE control panel
 SEARCH_ENGINE_ID = "011581237149803790891:kvvffq2br44"
 # the search query you want
-def get_search_result( query ) :
+def get_search_result( query, userid ) :
 
   url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={SEARCH_ENGINE_ID}&q={query}"
 # make the API request
@@ -28,27 +28,7 @@ def get_search_result( query ) :
     print (result[0])
     print (result[1])
     print (result[2])
-    return result
     
-    # get the page title
-    #title = search_item.get("title")
+    return make_flex_search_result(result, userid)
     
-    # page snippet   
-    #snippet = search_item.get("snippet")
-    
-    # alternatively, you can get the HTML snippet (bolded keywords)    
-    #html_snippet = search_item.get("htmlSnippet")
-    
-    # extract the page url    
-    #link = search_item.get("link")
-    
-    # print the results
-    
-    #print("="*10, f"Result #{i+start-1}", "="*10)
-    #print("Title:", title)
-    #print("Description:", snippet)
-    #print("URL:", link, "\n")
-    
-
-    
-get_search_result( "iphone 13" )
+    # return result

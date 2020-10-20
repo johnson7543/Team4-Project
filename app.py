@@ -60,7 +60,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)#每當收到LINE的訊息事件MessageEvent，且是一則文字訊息時 ，就執行下列程式碼。
 def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"標籤。
-    msg = "乖，再過幾年就可以了哦！"
+    msg = "呵呵呵"
     egg = '-' + '\n' + msg + '\n\n\n\n' + "會看到這句話的你... 不是碰到bug，" + '\n\n' + "就是他媽有夠閒。"
     # event長這樣是一個json物件
     #    event = {"reply_token":"就是代表reply_token的一串亂碼", 
@@ -81,16 +81,16 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     if ( data["result"]["parameters"] ) :
         responseJson.append(data["result"]["parameters"]["Target"])  # '獎學金'
     
-        if ( data["result"]["fulfillment"] ):
+        if ( data["result"]["fulfillment"] ) :
             fulfi_text = data["result"]['fulfillment']["speech"]
-            if "查詢獎學金2" == data["result"]["metadata"]["intentName"]:
+            if "查詢獎學金2" == data["result"]["metadata"]["intentName"] :
               fulfi_text = fulfi_text + get_confirm_message.get_message(data) # add confirm message
         else :
             fulfi_text = ""
         
         message = TextSendMessage( text = fulfi_text )
         
-        if 'yes' in data["result"]["metadata"]["intentName"]:
+        if 'yes' in data["result"]["metadata"]["intentName"] :
             # dialogflow return 'yes' means the conversation was end.
             data_str = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
             # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
@@ -109,7 +109,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             #message也是一個json物件(或許跟event長很像)
             #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
             
-        if 'classification' in data["result"]["metadata"]["intentName"]: #如果要繼續分類的話  
+        if 'classification' in data["result"]["metadata"]["intentName"] : #如果要繼續分類的話  
             if 'next' in data["result"]["metadata"]["intentName"]:
                 data_str = test_mongodb.runMongo(responseJson, data)
                 print(data_str)
@@ -118,10 +118,10 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
                 message = template_message.scholarship_template
                         
             
-        if 'Ask Itouch 1' in data["result"]["metadata"]["intentName"]:
+        if 'Ask Itouch 1' in data["result"]["metadata"]["intentName"] :
             message = template_message.iouch_template
             
-        if 'Ask Itouch 2' in data["result"]["metadata"]["intentName"]:
+        if 'Ask Itouch 2' in data["result"]["metadata"]["intentName"] :
             a_list = test_mongodb.runMongo(responseJson, data)
             my_contents = Make_Bubble.Get_contents(a_list)
             #message = TextSendMessage( text = data_str )
@@ -132,15 +132,14 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
         #當其他使用者傳送信息給你的 LINE 聊天機器人，會產生一個reply_token，
         #你的聊天機器人拿著這個reply_token回覆傳信息的使用者，回覆完畢，reply_token消失
     
-    else:
+    else :
         if ( data["result"]["fulfillment"]["speech"] ):
-            fulfi_text = data["result"]['fulfillment']["speech"]          
+            fulfi_text = data["result"]['fulfillment']["speech"]        
+            message = TextSendMessage( text = fulfi_text )
         else :
-            userName = get_user_profile.getProfile(event.source.user_id).display_name
-            fulfi_text_result = get_google_search.get_search_result(event.message.text)
-            fulfi_text = '-' + '\n' + '嗨！ ' + userName + '\n' + '你可能會想看這個：' + '\n\n' +  fulfi_text_result[0] + '\n' + fulfi_text_result[1] + '\n\n' + fulfi_text_result[2]
-            # fulfi_text = "Exception : " + event.message.text + "\n" + "試著重新問我一些問題吧" + "\n"
-        message = TextSendMessage( text = fulfi_text ) 
+            my_contents = get_google_search.get_search_result(event.message.text, event.source.user_id)
+            message = FlexSendMessage( alt_text='令人意外的結果', contents = my_contents )
+         
         line_bot_api.reply_message(event.reply_token, message )
     
     
