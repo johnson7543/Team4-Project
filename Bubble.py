@@ -19,12 +19,12 @@ Bubble_Type =     {
             "weight": "bold",
             "position": "relative",
             "align": "center",
+            "wrap":"true",
             "action": {
               "type": "uri",
               "label": "action",
               "uri": "http://linecorp.com/"
-            },
-            "wrap":"false"
+            }
           }
         ]
       },
