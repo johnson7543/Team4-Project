@@ -16,6 +16,23 @@ def get_search_result( query, userid ) :
 # iterate over 10 results found
   result = []
   for i, search_item in enumerate(search_items, start=1) :  
+    if query in search_item.get("title") :  # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
+      result.append(search_item.get("title"))
+      result.append(search_item.get("link"))
+      if ( search_item.get("pagemap") ) :
+        if ( search_item["pagemap"].get("cse_image") ) :
+          result.append(search_item["pagemap"]["cse_image"][0]["src"])
+        else :
+          result.append(search_item["pagemap"]["metatags"][0]["image"])
+      else :
+        result.append("https://i.imgur.com/yPVpqWM.jpg")
+      print (result[0])
+      print (result[1])
+      print (result[2])
+    
+      return make_flex_search_result.set_flex_search_result(result, userid)
+    
+  for i, search_item in enumerate(search_items, start=1) :  # 為了怕完全找不到有一樣字串存在的標題...
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
     if ( search_item.get("pagemap") ) :
@@ -25,10 +42,8 @@ def get_search_result( query, userid ) :
         result.append(search_item["pagemap"]["metatags"][0]["image"])
     else :
       result.append("https://i.imgur.com/yPVpqWM.jpg")
-    print (result[0])
-    print (result[1])
-    print (result[2])
+      print (result[0])
+      print (result[1])
+      print (result[2])
     
-    return make_flex_search_result.set_flex_search_result(result, userid)
-    
-    # return result
+      return make_flex_search_result.set_flex_search_result(result, userid)
