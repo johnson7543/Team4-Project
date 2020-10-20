@@ -29,6 +29,6 @@ def get_search_result( query, userid ) :
     print (result[1])
     print (result[2])
     
-    return make_flex_search_result(result, userid)
+    return make_flex_search_result.set_flex_search_result(result, userid)
     
     # return result
