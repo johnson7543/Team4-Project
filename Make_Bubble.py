@@ -4,14 +4,17 @@ Created on Tue Oct 20 16:56:32 2020
 
 @author: LIN
 """
-
+#從Bubble.py導入字典Bubble_Type
 import Bubble
-
-A_bubble = Bubble.bubble_type
+A_bubble = Bubble.Bubble_Type
 print(type(A_bubble)) #dict
 
+#創造一個Total
 Total = { "type": "carousel","contents": [] }
 print(Total)
+
+Get_Total() :
+    
 Total["contents"].append(A_bubble)
 Total["contents"].append(A_bubble)
 print(Total)
