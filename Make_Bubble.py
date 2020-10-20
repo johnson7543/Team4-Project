@@ -33,6 +33,10 @@ def Get_contents(a_list) :
         #bubble裡面的地一個Box的照片網址
         A_bubble["body"]["contents"][0]["contents"][0]["url"] = string
         
+
+        
+
+        
         contents["contents"].append(A_bubble)
 
     print(contents)
