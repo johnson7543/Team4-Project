@@ -15,10 +15,15 @@ Bubble_Type =     {
           {
             "type": "text",
             "text": "搜尋結果",
-            "size": "4xl",
+            "size": "xxl",
             "weight": "bold",
             "position": "relative",
             "align": "center"
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "http://linecorp.com/"
+            }
           }
         ]
       },
@@ -34,21 +39,6 @@ Bubble_Type =     {
                 "type": "image",
                 "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
                 "size":"full"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "hello, world",
-                    "action": {
-                      "type": "uri",
-                      "label": "action",
-                      "uri": "http://linecorp.com/"
-                    }
-                  }
-                ]
               }
             ]
           }
