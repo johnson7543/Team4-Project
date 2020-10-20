@@ -21,7 +21,7 @@ def set_flex_search_result( result, userid ) :
         #bubble裡面的地一個Box的標提裡面暗藏的網址
   A_NEW_bubble["body"]["contents"][0]["action"]["uri"] = string
         
-  string = result[3]     
+  string = result[2]     
         #bubble裡面的地一個Box的照片網址
   A_NEW_bubble["header"]["contents"][0]["url"] = string
             
