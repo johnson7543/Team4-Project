@@ -20,7 +20,8 @@ Bubble_Type =     {
             "aspectMode": "cover",
             "animated": True
           }
-        ]
+        ],
+        "backgroundColor": "#D0D0D0"
       },
       "body": {
         "type": "box",
@@ -42,11 +43,6 @@ Bubble_Type =     {
           }
         ],
         "paddingTop": "none",
-        "background": {
-          "type": "linearGradient",
-          "angle": "0deg",
-          "startColor": "#000000",
-          "endColor": "#ffffff"
-        }
+        "backgroundColor": "#D0D0D0"
       }
     }
