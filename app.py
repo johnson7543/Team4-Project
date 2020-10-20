@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, ButtonsTemplate, MessageTemplateAction
+    MessageEvent, TextMessage, TextSendMessage, FlexSendMessage
 )
 import os
 import apiai 
@@ -125,7 +125,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             a_list = test_mongodb.runMongo(responseJson, data)
             my_contents = Make_Bubble.Get_contents(a_list)
             #message = TextSendMessage( text = data_str )
-            message =  FlexSendMessage( alt_text='公告查詢結果', contents = my_contents
+            message =  FlexSendMessage( alt_text='公告查詢結果', contents = my_contents )
             
         line_bot_api.reply_message( event.reply_token, message )
         #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟
