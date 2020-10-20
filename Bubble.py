@@ -28,11 +28,12 @@ Bubble_Type =     {
         "contents": [
           {
             "type": "box",
-            "layout": "horizontal",
+            "layout": "vertical",
             "contents": [
               {
                 "type": "image",
-                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png"
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+                "size":"full"
               },
               {
                 "type": "box",
@@ -46,30 +47,6 @@ Bubble_Type =     {
                       "label": "action",
                       "uri": "http://linecorp.com/"
                     }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "image",
-                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "hello, world"
-                  },
-                  {
-                    "type": "text",
-                    "text": "hello, world"
                   }
                 ]
               }
