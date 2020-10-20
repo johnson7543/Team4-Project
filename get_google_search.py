@@ -7,14 +7,7 @@ SEARCH_ENGINE_ID = "011581237149803790891:kvvffq2br44"
 # the search query you want
 def get_search_result( query ) :
 
-# using the first page
-  page = 1
-# constructing the URL
-# doc: https://developers.google.com/custom-search/v1/using_rest
-# calculating start, (page=2) => (start=11), (page=3) => (start=21)
-  start = (page - 1) * 10 + 1
   url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={SEARCH_ENGINE_ID}&q={query}"
-#&start={start}
 # make the API request
   data = requests.get(url).json()
   print(data)
@@ -25,8 +18,12 @@ def get_search_result( query ) :
   for i, search_item in enumerate(search_items, start=1) :  
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
-    result.append(search_item.get("pagemap")["cse_image"][0]["src"])
+    if ( search_item.get("pagemap") ) :
+      result.append(search_item.get("pagemap")["cse_image"][0]["src"])
+    else :
+      result.append("https://i.imgur.com/yPVpqWM.jpg")
     print (result[0])
+    print (result[1])
     print (result[2])
     return result
     
@@ -52,4 +49,4 @@ def get_search_result( query ) :
 
     
 
-
+get_search_result( "iphone 12" )

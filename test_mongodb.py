@@ -32,9 +32,9 @@ def runMongo(response, data):
         profile_photo = profile.picture_url
         profile_name = profile.display_name
         
-        if ( data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"] ) :
+        if ( response[2] != "公告" and data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"] ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"])
-        else :
+        elif( response[2] != "公告" ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory"])
           
         mydict = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
