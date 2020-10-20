@@ -23,7 +23,8 @@ Bubble_Type =     {
               "type": "uri",
               "label": "action",
               "uri": "http://linecorp.com/"
-            }
+            },
+            "wrap":"true"
           }
         ]
       },
