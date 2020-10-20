@@ -13,6 +13,18 @@ Bubble_Type =     {
         "layout": "vertical",
         "contents": [
           {
+            "type": "image",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+            "margin": "none",
+            "size": "full"
+          }
+        ]
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
             "type": "text",
             "text": "搜尋結果",
             "size": "xl",
@@ -25,18 +37,6 @@ Bubble_Type =     {
               "label": "action",
               "uri": "http://linecorp.com/"
             }
-          }
-        ]
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
-            "margin": "none",
-            "size": "full"
           }
         ],
         "background": {
