@@ -26,12 +26,12 @@ def Get_contents(a_list) :
         string = a_list[0]
         a_list.pop(0)
         #bubble裡面的地一個Box的標提裡面暗藏的網址
-        A_bubble["body"]["contents"][0]["contents"][1]["contents"][0]["action"]["uri"]
+        A_bubble["body"]["contents"][0]["contents"][1]["contents"][0]["action"]["uri"] = string
         
         string = a_list[0]
         a_list.pop(0)       
         #bubble裡面的地一個Box的照片網址
-        A_bubble["body"]["contents"][0]["contents"][0]["url"]
+        A_bubble["body"]["contents"][0]["contents"][0]["url"] = string
         
         contents["contents"].append(A_bubble)
 
