@@ -23,8 +23,7 @@ def get_search_result( query, userid ) :
       # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
       result.append(search_item.get("title"))
       result.append(search_item.get("link"))
-      if search_item.get("link")[4] != 's' :
-        break
+      if search_item.get("link")[4] != 's' : break
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           result.append(search_item["pagemap"]["cse_image"][0]["src"])
@@ -48,6 +47,7 @@ def get_search_result( query, userid ) :
           result.append(search_item["pagemap"]["cse_image"][0]["src"])
         else :
           result.append(search_item["pagemap"]["metatags"][0]["image"])
+        if ( result[2][4] != 's' ) : break
       else :
         result.append("https://i.imgur.com/yPVpqWM.jpg")
       print (result[0])
