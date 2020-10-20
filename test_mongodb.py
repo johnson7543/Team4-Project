@@ -50,7 +50,3 @@ def runMongo(response, data):
         
         return select_mongodb.seldata(sel_client, response, data) # select from db.collection
     
-    
-    
-   
-    
