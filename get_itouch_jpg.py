@@ -8,7 +8,7 @@ Created on Tue Oct 13 18:49:56 2020
 import urllib.request as req #載入模組並設定別名
 import bs4 # 爬蟲分析
 
-def start_func ( url_type ) :
+def get_jpg( url_type ) :
 
   url = url_type
     

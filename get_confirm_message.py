@@ -1,17 +1,19 @@
-def get_confirm_message(data) :
+def get_message(data) :
   temp_category = ""
   temp_score = ""
-    
+
   if ( data["result"]["parameters"]["ApplicationCategory"] ) :
     for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"] :
       if "大肆" in temp :
           temp = "大四生"
-      temp_category = temp_category + temp + '\n'
+      if "大醫生" in temp :
+          temp = "大一生"      
+      temp_category = temp_category + temp + '\n' 
         
   if ( data["result"]["parameters"]["ApplicationScore"] ) :
         temp_score = data["result"]["parameters"]["ApplicationScore"]
   if ( data["result"]["parameters"]["number"]):
-          temp_score = temp_score + data["result"]["parameters"]["number"]
+          temp_score = " ".join(temp_score) + str(data["result"]["parameters"]["number"])
     
   temp_all = temp_category + temp_score
 
