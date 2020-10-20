@@ -37,7 +37,7 @@ def Get_contents(a_list) :
 
         
         contents["contents"].append(bubble_list[i])
-        i++
+        i=i+1
 
     print(contents)
     return contents
