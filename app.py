@@ -17,6 +17,7 @@ import get_confirm_message
 import get_user_profile
 import get_google_search
 import template_message
+import Make_Bubble
 
 app = Flask(__name__)
 
@@ -121,10 +122,10 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             message = template_message.iouch_template
             
         if 'Ask Itouch 2' in data["result"]["metadata"]["intentName"]:
-            data_str = test_mongodb.runMongo(responseJson, data)
-            print(data_str)
-            message = TextSendMessage( text = data_str )
-            
+            a_list = test_mongodb.runMongo(responseJson, data)
+            my_contents = Make_Bubble.Get_contents(a_list)
+            #message = TextSendMessage( text = data_str )
+            message =  FlexSendMessage( alt_text='公告查詢結果', contents = my_contents
             
         line_bot_api.reply_message( event.reply_token, message )
         #LineBotApi物件的reply_message只能用在回覆訊息，且提供兩個參數:reply_token只能使用一次用完即丟

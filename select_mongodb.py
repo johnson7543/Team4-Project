@@ -1,5 +1,6 @@
 import re
 import random
+import get_itouch_jpg
 
 def arrange_scholarship(sel_client, data):
     select_db = "Total_Scholarship"
@@ -147,27 +148,43 @@ def get_itouch( sel_client, data ):
     select_db = "Total_Itouch"
     db = sel_client[select_db]
     temp_type = data["result"]["contexts"][0]["parameters"]["announcementtype"]
-    
     select_col = temp_type # 選擇分類
     
+    a_list = [] #一個空的list
     if 'Itouch_校內/校外徵才' in select_col :
         select_col = 'Itouch_校內徵才'
         collection = db[select_col]
         data_db = collection.find()
-        data_str1 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:2])
         
+        for i in list(data_db) :
+            a_list.append(str(i.get('標題')))
+            a_list.append(str(i.get('網址')))
+            a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
+        
+        #data_str1 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:2])
+
         select_col = 'Itouch_徵才公告'
         collection = db[select_col]
         data_db = collection.find()
-        data_str2 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:2])
-        data_str = data_str1 + data_str2 
+        for i in list(data_db) :
+            a_list.append(str(i.get('標題')))
+            a_list.append(str(i.get('網址')))
+            a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
+        #data_str2 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:2])
+        #data_str = data_str1 + data_str2 
         
     else :
         collection = db[select_col]
         data_db = collection.find()
-        data_str = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:4])
-    print(data_str)
-    return data_str
+        #data_str = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:4])
+        for i in list(data_db) :
+            a_list.append(str(i.get('標題')))
+            a_list.append(str(i.get('網址')))
+            a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
+    #print(data_str)
+    #return data_str
+    return a_list
+
 def seldata(sel_client, response, data):
     
     if '獎學金' in response[2]:

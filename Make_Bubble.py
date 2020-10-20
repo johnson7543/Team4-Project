@@ -4,20 +4,39 @@ Created on Tue Oct 20 16:56:32 2020
 
 @author: LIN
 """
-#從Bubble.py導入字典Bubble_Type
-import Bubble
-A_bubble = Bubble.Bubble_Type
-print(type(A_bubble)) #dict
 
-#創造一個Total
-Total = { "type": "carousel","contents": [] }
-print(Total)
 
-Get_Total() :
+def Get_contents(a_list) :
     
-Total["contents"].append(A_bubble)
-Total["contents"].append(A_bubble)
-print(Total)
+    #從Bubble.py導入字典Bubble_Type
+    import Bubble
+    A_bubble = Bubble.Bubble_Type
+    print(type(A_bubble)) #dict
+
+    #創造一個contents
+    contents = { "type": "carousel","contents": [] }
+    print(contents)
+        
+    while len(a_list) != 0 :
+        string = a_list[0]
+        a_list.pop(0)
+        #bubble裡面的地一個Box的標題
+        A_bubble["body"]["contents"][0]["contents"][1]["contents"][0]["text"] = string
+        
+        string = a_list[0]
+        a_list.pop(0)
+        #bubble裡面的地一個Box的標提裡面暗藏的網址
+        A_bubble["body"]["contents"][0]["contents"][1]["contents"][0]["action"]["uri"]
+        
+        string = a_list[0]
+        a_list.pop(0)       
+        #bubble裡面的地一個Box的照片網址
+        A_bubble["body"]["contents"][0]["contents"][0]["url"]
+        
+        contents["contents"].append(A_bubble)
+
+    print(contents)
+    return contents
 
 """
 #改bubble用appned放入total
