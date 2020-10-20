@@ -24,15 +24,21 @@ def get_jpg( url_type ) :
   titles.remove(titles[0])
   
   target = []
+  temp_count = 0
   
   for i in titles :
     if ".jpg" in i.get("src") :
+      temp_count = temp_count + 1
       target.append(i.get("src"))
 
-  for i in target :    
-    print("https://ann.cycu.edu.tw" + i )
-    return "https://ann.cycu.edu.tw" + i
-    
-    
+  if temp_count < 1 :
+    return "https://i.imgur.com/yPVpqWM.jpg"
+  else : 
+    for i in target :    
+      # print("https://ann.cycu.edu.tw" + i )
+      return "https://ann.cycu.edu.tw" + i
+        
 # str_test = start_func( "https://ann.cycu.edu.tw/aa/frontend/AnnItem.jsp?sn=47479" )
-# print(str_test)
+# print(str_test) 
+
+
