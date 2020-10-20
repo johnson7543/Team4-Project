@@ -15,7 +15,7 @@ Bubble_Type =     {
           {
             "type": "text",
             "text": "搜尋結果",
-            "size": "xxl",
+            "size": "xl",
             "weight": "bold",
             "position": "relative",
             "align": "center",
