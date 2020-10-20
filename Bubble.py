@@ -18,7 +18,7 @@ Bubble_Type =     {
             "size": "xxl",
             "weight": "bold",
             "position": "relative",
-            "align": "center"
+            "align": "center",
             "action": {
               "type": "uri",
               "label": "action",
