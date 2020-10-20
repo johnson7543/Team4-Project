@@ -16,11 +16,11 @@ def Get_contents(a_list) :
     #創造一個contents
     contents = { "type": "carousel","contents": [] }
     print(contents)
-        
+    bubble_list = []
+    i = 0
     while len(a_list) != 0 :
         string = a_list[0]
         a_list.pop(0)
-        print(string)
         #bubble裡面的地一個Box的標題
         A_bubble["body"]["contents"][0]["contents"][1]["contents"][0]["text"] = string
         
@@ -28,17 +28,16 @@ def Get_contents(a_list) :
         a_list.pop(0)
         #bubble裡面的地一個Box的標提裡面暗藏的網址
         A_bubble["body"]["contents"][0]["contents"][1]["contents"][0]["action"]["uri"] = string
-        
         string = a_list[0]
         a_list.pop(0)       
         #bubble裡面的地一個Box的照片網址
         A_bubble["body"]["contents"][0]["contents"][0]["url"] = string
         
+        bubble_list[i] = A_bubble
 
         
-
-        
-        contents["contents"].append(A_bubble)
+        contents["contents"].append(bubble_list[i])
+        i++
 
     print(contents)
     return contents
