@@ -42,6 +42,12 @@ Bubble_Type =     {
               }
             ]
           }
-        ]
+        ],
+        "background": {
+          "type": "linearGradient",
+          "angle": "0deg",
+          "startColor": "#000000",
+          "endColor": "#ffffff"
+        }
       }
     }
