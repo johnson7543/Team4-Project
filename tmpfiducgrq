@@ -31,19 +31,20 @@ def get_jpg( url_type ) :
                     "https://i.imgur.com/uje85ic.jpg", "https://i.imgur.com/QnTJfmt.jpg"]
   
   for i in titles :
-    if ( ".JPG" in i.get("src") ) or ( ".png" in i.get("src") ) or ( ".jpg" in i.get("src") ) or ( ".PNG" in i.get("src") ) :
+    if ".JPG" in i.get("src") or ".png" in i.get("src") or ".jpg" in i.get("src") or ".PNG" in i.get("src") :
       temp_count = temp_count + 1
+      print(i.get("src"))
       target.append(i.get("src"))
 
   if temp_count < 1 :
-    temp_num = random.randint(0,5)
+    temp_num = random.randint(0,6)
     return random_picture[temp_num]
   else : 
     for i in target :    
       # print("https://ann.cycu.edu.tw" + i )
       return "https://ann.cycu.edu.tw" + i
         
-# str_test = get_jpg( "https://ann.cycu.edu.tw/aa/frontend/AnnItem.jsp?sn=47735" )
-# print(str_test)
+str_test = get_jpg( "https://ann.cycu.edu.tw/aa/frontend/AnnItem.jsp?sn=47479" )
+print(str_test)
       
   
