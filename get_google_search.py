@@ -18,7 +18,7 @@ def get_search_result( query ) :
   for i, search_item in enumerate(search_items, start=1) :  
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
-    if ( search_item.get("pagemap") ) :
+    if ( search_item.get("pagemap")["cse_image"] ) :
       result.append(search_item.get("pagemap")["cse_image"][0]["src"])
     else :
       result.append("https://i.imgur.com/yPVpqWM.jpg")
