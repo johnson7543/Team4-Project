@@ -13,16 +13,18 @@ def get_search_result( query, userid ) :
   print(data)
 # get the result items
   search_items = data.get("items")
-# iterate over 10 results found
-  result = []
   i = 0
   for i, search_item in enumerate(search_items, start=1) : 
+    result = []
     i += 1
     if i == 4 :
-      break
-    if query in search_item.get("title") :  # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
+        break
+    if query[0] in search_item.get("title") and not("Facebook" in search_item.get("title")) :  # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
       result.append(search_item.get("title"))
       result.append(search_item.get("link"))
+      print(search_item.get("link")[4])
+      if result[1][4] != 's' :
+        break
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           result.append(search_item["pagemap"]["cse_image"][0]["src"])
@@ -37,17 +39,20 @@ def get_search_result( query, userid ) :
       return make_flex_search_result.set_flex_search_result(result, userid)
     
   for i, search_item in enumerate(search_items, start=1) :  # 為了怕完全找不到有一樣字串存在的標題...
+    result = []
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
-    if ( search_item.get("pagemap") ) :
-      if ( search_item["pagemap"].get("cse_image") ) :
-        result.append(search_item["pagemap"]["cse_image"][0]["src"])
+    print(search_item.get("link")[4])
+    if search_item.get("link")[4] == 's' and not("Facebook" in search_item.get("title")) :
+      if ( search_item.get("pagemap") ) :
+        if ( search_item["pagemap"].get("cse_image") ) :
+          result.append(search_item["pagemap"]["cse_image"][0]["src"])
+        else :
+          result.append(search_item["pagemap"]["metatags"][0]["image"])
       else :
-        result.append(search_item["pagemap"]["metatags"][0]["image"])
-    else :
-      result.append("https://i.imgur.com/yPVpqWM.jpg")
-    print (result[0])
-    print (result[1])
-    print (result[2])
+        result.append("https://i.imgur.com/yPVpqWM.jpg")
+      print (result[0])
+      print (result[1])
+      print (result[2])
     
     return make_flex_search_result.set_flex_search_result(result, userid)
