@@ -4,7 +4,8 @@ Created on Tue Oct 20 16:56:32 2020
 
 @author: LIN
 """
-
+import copy
+#copy.deepcopy(a)
 
 def Get_contents(a_list) :
     
@@ -16,7 +17,7 @@ def Get_contents(a_list) :
     #創造一個contents
     contents = { "type": "carousel","contents": [] }
     print(contents)
-    bubble_list = []
+    bubble_list = [255]
     i = 0
     while len(a_list) != 0 :
         string = a_list[0]
