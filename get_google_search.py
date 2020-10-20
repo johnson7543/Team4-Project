@@ -42,8 +42,8 @@ def get_search_result( query, userid ) :
         result.append(search_item["pagemap"]["metatags"][0]["image"])
     else :
       result.append("https://i.imgur.com/yPVpqWM.jpg")
-      print (result[0])
-      print (result[1])
-      print (result[2])
+    print (result[0])
+    print (result[1])
+    print (result[2])
     
-      return make_flex_search_result.set_flex_search_result(result, userid)
+    return make_flex_search_result.set_flex_search_result(result, userid)
