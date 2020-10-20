@@ -27,7 +27,7 @@ def get_jpg( url_type ) :
   temp_count = 0
   
   for i in titles :
-    if ".jpg" in i.get("src") :
+    if ".JPG" or ".png" or ".jpg" or ".PNG"  in i.get("src") :
       temp_count = temp_count + 1
       target.append(i.get("src"))
 
