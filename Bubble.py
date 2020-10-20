@@ -19,7 +19,7 @@ Bubble_Type =     {
             "weight": "bold",
             "position": "relative",
             "align": "center",
-            "wrap":"true",
+            "wrap": true,
             "action": {
               "type": "uri",
               "label": "action",
