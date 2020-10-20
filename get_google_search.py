@@ -15,7 +15,11 @@ def get_search_result( query, userid ) :
   search_items = data.get("items")
 # iterate over 10 results found
   result = []
-  for i, search_item in enumerate(search_items, start=1) :  
+  i = 0
+  for i, search_item in enumerate(search_items, start=1) : 
+    i += 1
+    if i == 4 :
+      break
     if query in search_item.get("title") :  # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
       result.append(search_item.get("title"))
       result.append(search_item.get("link"))
