@@ -16,7 +16,9 @@ Bubble_Type =     {
             "type": "image",
             "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
             "margin": "none",
-            "size": "full"
+            "size": "full",
+            "aspectMode": "cover",
+            "animated": True
           }
         ]
       },
@@ -39,6 +41,7 @@ Bubble_Type =     {
             }
           }
         ],
+        "paddingTop": "none",
         "background": {
           "type": "linearGradient",
           "angle": "0deg",
