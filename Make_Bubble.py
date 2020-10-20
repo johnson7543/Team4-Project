@@ -32,7 +32,7 @@ def Get_contents(a_list) :
         string = a_list[0]
         a_list.pop(0)       
         #bubble裡面的地一個Box的照片網址
-        A_NEW_bubble["body"]["contents"][0]["contents"][0]["url"] = string
+        A_NEW_bubble["body"]["contents"][0]["url"] = string
         
 
       
