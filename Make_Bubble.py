@@ -20,6 +20,7 @@ def Get_contents(a_list) :
     while len(a_list) != 0 :
         string = a_list[0]
         a_list.pop(0)
+        print(string)
         #bubble裡面的地一個Box的標題
         A_bubble["body"]["contents"][0]["contents"][1]["contents"][0]["text"] = string
         
