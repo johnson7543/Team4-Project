@@ -18,7 +18,7 @@ def Get_contents(a_list) :
     contents = { "type": "carousel","contents": [] }
     print(contents)
     while len(a_list) != 0 :
-        A_NEW_bubble = deepcopy(A_bubble)
+        A_NEW_bubble = copy.deepcopy(A_bubble)
         string = a_list[0]
         a_list.pop(0)
         #bubble裡面的地一個Box的標題
