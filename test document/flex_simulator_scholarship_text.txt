@@ -9,15 +9,23 @@
         "contents": [
           {
             "type": "text",
-            "text": "財團法人工業技術研究院-電網聯盟獎學金",
+            "text": "工業技術研究",
             "size": "xl",
             "weight": "bold",
             "wrap": true,
-            "align": "center"
+            "align": "center",
+            "margin": "none"
           }
         ],
         "height": "100px",
-        "backgroundColor": "#F0F0F0"
+        "background": {
+          "type": "linearGradient",
+          "angle": "0deg",
+          "endColor": "#9D9D9D",
+          "startColor": "#F0F0F0"
+        },
+        "cornerRadius": "none",
+        "justifyContent": "center"
       },
       "body": {
         "type": "box",
@@ -25,14 +33,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "截止日期",
-            "size": "lg",
+            "text": "📅  2020-10-10",
+            "size": "xl",
             "margin": "none"
           },
           {
             "type": "text",
-            "text": "金額",
-            "size": "lg",
+            "text": "💵  10000",
+            "size": "xl",
             "margin": "md"
           },
           {
