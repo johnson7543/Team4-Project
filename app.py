@@ -14,10 +14,11 @@ import apiai
 import json
 import test_mongodb
 import get_confirm_message
-import get_user_profile
+# import get_user_profile
 import get_google_search
 import template_message
 import Make_Bubble
+import make_flex_scholarship
 
 app = Flask(__name__)
 
@@ -103,19 +104,20 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             if ( wtf ) :
               message = TextSendMessage( text = wtf ) 
             else :
-              message = TextSendMessage( text = fulfi_text + '\n'+ '-' + '\n' + data_str + '\n' + '這有可能不是全部的結果，' + '\n' + '不過我們還提供了額外方法，請問要繼續分類嗎？' )
-            #回傳訊息的製作，更改messgae裡面text的內容 
-            #TextSendMessage是要執行的動作，LINE還提供了其他包括：ImageSendMessage、VideoSendMessage、StickerSendMessage等等的許多許多動作
-            #message也是一個json物件(或許跟event長很像)
-            #把message的"text"這個項目改成此訊息經由dialogflow解析後的action
+              my_contents = make_flex_scholarship.set_flex_scholarship_result(data_str)
+              message =  FlexSendMessage( alt_text='獎學金查詢結果', contents = my_contents )
+              
             
-        if 'classification' in data["result"]["metadata"]["intentName"] : #如果要繼續分類的話  
-            if 'next' in data["result"]["metadata"]["intentName"]:
-                data_str = test_mongodb.runMongo(responseJson, data)
-                print(data_str)
-                message = TextSendMessage( text = data_str )
-            else :
-                message = template_message.scholarship_template
+        if 'classification' in data["result"]["metadata"]["intentName"] : # 如果要繼續分類的話  
+            if 'next' in data["result"]["metadata"]["intentName"] : # flex menue 的操作結果回傳
+              data_str = test_mongodb.runMongo(responseJson, data)
+              my_contents = make_flex_scholarship.set_flex_scholarship_result(data_str)
+              if ( data["result"]["contexts"][0]["parameters"]["others"] != "all_data" ) :
+                message =  FlexSendMessage( alt_text='更多的獎學金查詢結果', contents = my_contents )
+              else :
+                message = TextSendMessage( text = data_str ) # 回傳全部的獎學金 太多了只能用一般的text message
+            else : # 回傳flex menue
+              message = template_message.scholarship_template
                         
             
         if 'Ask Itouch 1' in data["result"]["metadata"]["intentName"] :

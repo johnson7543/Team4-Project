@@ -46,3 +46,56 @@ Bubble_Type =     {
         "backgroundColor": "#D0D0D0"
       }
     }
+
+
+Bubble_Scholarship_Type =    {
+  "type": "bubble",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "這是獎學金標題",
+        "size": "xl",
+        "position": "relative",
+        "weight": "bold",
+        "wrap": True,
+        "align": "center"
+      }
+    ],
+    "backgroundColor": "#D0D0D0"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "截止日期",
+        "size": "lg",
+        "margin": "none"
+      },
+      {
+        "type": "text",
+        "text": "金額",
+        "size": "lg",
+        "margin": "md"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "uri": "http://linecorp.com/",
+          "label": "點我領錢"
+        },
+        "style": "primary",
+        "position": "relative",
+        "margin": "xxl",
+        "height": "md",
+        "offsetTop": "xs"
+      }
+    ],
+    "backgroundColor": "#F0F0F0"
+  }
+}

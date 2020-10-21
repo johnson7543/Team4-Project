@@ -90,22 +90,19 @@ def arrange_scholarship(sel_client, data):
         
         if "money" in others_str :
           print("sorted by money")
-          data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
-          data_str = "".join(str(i.get('名稱')) + '\n'+ str(i.get('金額')) + '\n' + str(i.get('網址')) + '\n\n' for i in data_list_final[begin:last])
+          data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)        
                    
         elif "close" in others_str :
           print("sorted by date")
           data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
-          data_str = "".join(str(i.get('名稱')) + '\n'+ str(i.get('截止日期')) + '\n' + str(i.get('網址')) + '\n\n' for i in data_list_final[begin:last])
-          
-        elif "all_data" in others_str :
+        
+        data_str = "".join(str(i.get('名稱')) + '\n'+ str(i.get('截止日期')) + '\n'+ str(i.get('金額')) + '\n' + str(i.get('網址')) + '\n' for i in data_list_final[begin:last])
+ 
+        if "all_data" in others_str :
           print("print all data")
           random.shuffle(data_list_final)
-          data_str = "".join(str(i.get('名稱')) + '\n' + str(i.get('網址')) + '\n\n' for i in data_list_final )
-         
-        else :
-            data_str = "".join(str(i.get('名稱')) +'\n'+ str(i.get('網址')) + '\n\n' for i in data_list_final[begin:last])
-        
+          data_str = "".join(str(i.get('名稱')) + '\n' + str(i.get('網址')) + '\n' for i in data_list_final )
+          
         return data_str
     
     else :  # 當沒有說是清寒和報告成績
@@ -126,22 +123,19 @@ def arrange_scholarship(sel_client, data):
         
         if "money" in others_str :
           print("sorted by money")
-          data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)
-          data_str = "".join(str(i.get('名稱')) + '\n'+ str(i.get('金額')) + '\n' + str(i.get('網址')) + '\n\n' for i in data_list_final[begin:last])
+          data_list_final = sorted(data_list_final, key = lambda s:s["金額"], reverse = True)        
                    
         elif "close" in others_str :
           print("sorted by date")
           data_list_final = sorted(data_list_final, key = lambda s:s["截止日期"])
-          data_str = "".join(str(i.get('名稱')) + '\n'+ str(i.get('截止日期')) + '\n' + str(i.get('網址')) + '\n\n' for i in data_list_final[begin:last])
-          
-        elif "all_data" in others_str :
+        
+        data_str = "".join(str(i.get('名稱')) + '\n'+ str(i.get('截止日期')) + '\n'+ str(i.get('金額')) + '\n' + str(i.get('網址')) + '\n' for i in data_list_final[begin:last])
+ 
+        if "all_data" in others_str :
           print("print all data")
           random.shuffle(data_list_final)
-          data_str = "".join(str(i.get('名稱')) + '\n' + str(i.get('網址')) + '\n\n' for i in data_list_final )
-         
-        else :
-            data_str = "".join(str(i.get('名稱')) +'\n'+ str(i.get('網址')) + '\n\n' for i in data_list_final[begin:last])
-     
+          data_str = "".join(str(i.get('名稱')) + '\n' + str(i.get('網址')) + '\n' for i in data_list_final )
+             
         return data_str
     
 def get_itouch( sel_client, data ):
@@ -161,8 +155,6 @@ def get_itouch( sel_client, data ):
             a_list.append(str(i.get('網址')))
             a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
         
-        #data_str1 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:2])
-
         select_col = 'Itouch_徵才公告'
         collection = db[select_col]
         data_db = collection.find()
@@ -170,8 +162,6 @@ def get_itouch( sel_client, data ):
             a_list.append(str(i.get('標題')))
             a_list.append(str(i.get('網址')))
             a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
-        #data_str2 = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:2])
-        #data_str = data_str1 + data_str2 
         
     else :
         collection = db[select_col]
@@ -181,8 +171,7 @@ def get_itouch( sel_client, data ):
             a_list.append(str(i.get('標題')))
             a_list.append(str(i.get('網址')))
             a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
-    #print(data_str)
-    #return data_str
+
     return a_list
 
 def seldata(sel_client, response, data):
