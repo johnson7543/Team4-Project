@@ -1,4 +1,5 @@
 import requests
+import random
 import make_flex_search_result
 # get the API KEY here: https://developers.google.com/custom-search/v1/overview
 API_KEY = "AIzaSyD0Jz7sfKdq_vJI21azx4Rr67_6Ew3xio4"
@@ -6,9 +7,14 @@ API_KEY = "AIzaSyD0Jz7sfKdq_vJI21azx4Rr67_6Ew3xio4"
 SEARCH_ENGINE_ID = "011581237149803790891:kvvffq2br44"
 # the search query you want
 
+random_picture = ["https://i.imgur.com/yPVpqWM.jpg", "https://i.imgur.com/lgATe0t.jpg",
+                  "https://i.imgur.com/vbqktrv.jpg", "https://i.imgur.com/pd5leLb.jpg",
+                  "https://i.imgur.com/uje85ic.jpg", "https://i.imgur.com/QnTJfmt.jpg"]
+
 def get_search_result( query, userid ) :
+  temp_num = random.randint(0,5)
   flag = True
-  defult_photo = "https://i.imgur.com/yPVpqWM.jpg"
+  defult_photo = random_picture[temp_num]
   useful_photo = ""
   url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={SEARCH_ENGINE_ID}&q={query}"
   # make the API request
@@ -26,11 +32,18 @@ def get_search_result( query, userid ) :
       print(search_item.get("link")[4])
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
-          result.append(search_item["pagemap"]["cse_image"][0]["src"])
+          temp = search_item["pagemap"]["cse_image"][0]["src"]
         else :
-          result.append(search_item["pagemap"]["metatags"][0]["image"])
+          temp = search_item["pagemap"]["metatags"][0]["image"]
+          
+        if ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp :
+          result.append(temp)
+        else : 
+          result.append(defult_photo)
+          
       else :
         result.append(defult_photo)
+        
       if ( result[2][4] == 's' and result[2] != defult_photo and flag ) : 
           flag = False
           useful_photo = result[2]
@@ -54,11 +67,18 @@ def get_search_result( query, userid ) :
     if search_item.get("link")[4] == 's' :
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
-          result.append(search_item["pagemap"]["cse_image"][0]["src"])
+          temp = search_item["pagemap"]["cse_image"][0]["src"]
         else :
-          result.append(search_item["pagemap"]["metatags"][0]["image"])
+          temp = search_item["pagemap"]["metatags"][0]["image"]
+          
+        if ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp :
+          result.append(temp)
+        else : 
+          result.append(defult_photo)
+          
       else :
         result.append(defult_photo)
+        
       if ( result[2][4] == 's' and result[2] != defult_photo and flag ) : 
           flag = False
           useful_photo = result[2]
