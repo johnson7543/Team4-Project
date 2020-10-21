@@ -30,12 +30,12 @@ def set_flex_scholarship_result( result ) :
     string = list_result[0]
     list_result.pop(0)
         # 日期
-    A_NEW_bubble["body"]["contents"][0]["text"] = "📅 " + string
+    A_NEW_bubble["body"]["contents"][0]["text"] = "📅  " + string
         
     string = list_result[0]
     list_result.pop(0)       
         # 金額
-    A_NEW_bubble["body"]["contents"][1]["text"] = "💵 " + string
+    A_NEW_bubble["body"]["contents"][1]["text"] = "💵  " + string
                   
     string = list_result[0]
     list_result.pop(0)       

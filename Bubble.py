@@ -65,7 +65,13 @@ Bubble_Scholarship_Type =    {
       }
     ],
     "height": "100px",
-    "backgroundColor": "#D0D0D0"
+    "background": {
+        "type": "linearGradient",
+        "angle": "0deg",
+        "endColor": "#9D9D9D",
+        "startColor": "#F0F0F0"
+    },
+    "justifyContent": "center"
   },
   "body": {
     "type": "box",
@@ -74,13 +80,13 @@ Bubble_Scholarship_Type =    {
       {
         "type": "text",
         "text": "截止日期",
-        "size": "lg",
+        "size": "xl",
         "margin": "none"
       },
       {
         "type": "text",
         "text": "金額",
-        "size": "lg",
+        "size": "xl",
         "margin": "md"
       },
       {
