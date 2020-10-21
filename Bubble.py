@@ -64,6 +64,7 @@ Bubble_Scholarship_Type =    {
         "align": "center"
       }
     ],
+    "height": "100px",
     "backgroundColor": "#D0D0D0"
   },
   "body": {
