@@ -1,0 +1,63 @@
+{
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "財團法人工業技術研究院-電網聯盟獎學金",
+            "size": "xl",
+            "weight": "bold",
+            "wrap": true,
+            "align": "center"
+          }
+        ],
+        "height": "100px",
+        "backgroundColor": "#F0F0F0"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "截止日期",
+            "size": "lg",
+            "margin": "none"
+          },
+          {
+            "type": "text",
+            "text": "金額",
+            "size": "lg",
+            "margin": "md"
+          },
+          {
+            "type": "button",
+            "action": {
+              "type": "uri",
+              "uri": "http://linecorp.com/",
+              "label": "點我領錢"
+            },
+            "style": "primary",
+            "position": "relative",
+            "margin": "xxl",
+            "height": "md",
+            "offsetTop": "xs"
+          }
+        ]
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": []
+      }
+    }
+  ]
+}
