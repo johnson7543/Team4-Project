@@ -16,6 +16,7 @@ contents = {
             "type": "text",
             "text": "更多篩選條件...",
             "size": "xl",
+            "weight": "bold",
             "align": "center",
             "color": "#000000"
           },
@@ -85,9 +86,10 @@ contents = {
           {
             "type": "text",
             "text": "多！還要更多！",
+            "size": "xl",
+            "weight": "bold",
             "align": "center",
-            "color": "#000000",
-            "size": "xl"
+            "color": "#000000"
           },
           {
             "type": "button",

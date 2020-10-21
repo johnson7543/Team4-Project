@@ -53,6 +53,7 @@ Bubble_Scholarship_Type =    {
   "header": {
     "type": "box",
     "layout": "vertical",
+    "justifyContent": "center",
     "contents": [
       {
         "type": "text",
@@ -63,15 +64,15 @@ Bubble_Scholarship_Type =    {
         "wrap": True,
         "align": "center"
       }
-    ],
+    ],    
     "height": "100px",
+    "backgroundColor": "#D0D0D0",
     "background": {
         "type": "linearGradient",
         "angle": "0deg",
         "endColor": "#9D9D9D",
         "startColor": "#F0F0F0"
-    },
-    "justifyContent": "center"
+    }
   },
   "body": {
     "type": "box",
