@@ -5,32 +5,41 @@ API_KEY = "AIzaSyD0Jz7sfKdq_vJI21azx4Rr67_6Ew3xio4"
 # get your Search Engine ID on your CSE control panel
 SEARCH_ENGINE_ID = "011581237149803790891:kvvffq2br44"
 # the search query you want
-def get_search_result( query, userid ) :
 
+def get_search_result( query, userid ) :
+  flag = True
+  defult_photo = "https://i.imgur.com/yPVpqWM.jpg"
+  useful_photo = ""
   url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={SEARCH_ENGINE_ID}&q={query}"
-# make the API request
+  # make the API request
   data = requests.get(url).json()
   print(data)
-# get the result items
+  # get the result items
   search_items = data.get("items")
   i = 0
-  for i, search_item in enumerate(search_items, start=1) : 
+  for i, search_item in enumerate(search_items, start=0) :  
     result = []
-    i += 1
-    if i == 4 :
-        break
-    if query[0] in search_item.get("title") and not( "facebook" in search_item.get("link") ) and not( "instagram" in search_item.get("link") ) :
+    if query[0] in search_item.get("title") :
       # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
       result.append(search_item.get("title"))
       result.append(search_item.get("link"))
-      if search_item.get("link")[4] != 's' : break
+      print(search_item.get("link")[4])
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           result.append(search_item["pagemap"]["cse_image"][0]["src"])
         else :
           result.append(search_item["pagemap"]["metatags"][0]["image"])
       else :
-        result.append("https://i.imgur.com/yPVpqWM.jpg")
+        result.append(defult_photo)
+      if ( result[2][4] == 's' and result[2] != defult_photo and flag ) : 
+          flag = False
+          useful_photo = result[2]
+      else :
+          if (useful_photo) : result[2] = useful_photo
+          else : result[2] = defult_photo          
+      if search_item.get("link")[4] != 's' : break
+   
+      print ("end at first stage")
       print (result[0])
       print (result[1])
       print (result[2])
@@ -41,17 +50,26 @@ def get_search_result( query, userid ) :
     result = []
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
-    if search_item.get("link")[4] == 's' and not( "facebook" in search_item.get("link") ) and not( "instagram" in search_item.get("link") ) :
+    print(search_item.get("link")[4])
+    if search_item.get("link")[4] == 's' :
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           result.append(search_item["pagemap"]["cse_image"][0]["src"])
         else :
           result.append(search_item["pagemap"]["metatags"][0]["image"])
-        if ( result[2][4] != 's' ) : break
       else :
-        result.append("https://i.imgur.com/yPVpqWM.jpg")
+        result.append(defult_photo)
+      if ( result[2][4] == 's' and result[2] != defult_photo and flag ) : 
+          flag = False
+          useful_photo = result[2]
+      else :
+          if (useful_photo) : result[2] = useful_photo
+          else : result[2] = defult_photo
+          
+      print ("end at second stage")       
       print (result[0])
       print (result[1])
       print (result[2])
+    
     
       return make_flex_search_result.set_flex_search_result(result, userid)
