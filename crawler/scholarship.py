@@ -76,7 +76,13 @@ for i in range( 4, worksheet.max_row ) :
                                             
   #整理金額
   if scholarship_dict["金額"] == None :
-      scholarship_dict["金額"] = "面議"
+      scholarship_dict["金額"] = "0"
+      scholarship_dict["金額"] = int(scholarship_dict["金額"])
+      if scholarship_dict["金額"] == 0 :
+          scholarship_dict["金額"] = 10000
+      
+  else :
+      scholarship_dict["金額"] = int(scholarship_dict["金額"])
       
   # 整理所有分數 把no改成0若不是no則改型別為int
   if scholarship_dict["學業成績"] != "no" :
