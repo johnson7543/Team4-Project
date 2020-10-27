@@ -33,8 +33,9 @@ def get_search_result( query, userid ) :
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           temp = search_item["pagemap"]["cse_image"][0]["src"]
-        else :
+        elif ( search_item["pagemap"].get("metatags") and search_item["pagemap"]["metatags"][0].get("image") ) :
           temp = search_item["pagemap"]["metatags"][0]["image"]
+        else: temp = ""
           
         if ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp :
           result.append(temp)
@@ -68,8 +69,9 @@ def get_search_result( query, userid ) :
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           temp = search_item["pagemap"]["cse_image"][0]["src"]
-        else :
+        elif ( search_item["pagemap"].get("metatags") and search_item["pagemap"]["metatags"][0].get("image") ) :
           temp = search_item["pagemap"]["metatags"][0]["image"]
+        else: temp = ""
           
         if ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp :
           result.append(temp)
