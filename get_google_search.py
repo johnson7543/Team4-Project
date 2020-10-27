@@ -9,10 +9,12 @@ SEARCH_ENGINE_ID = "011581237149803790891:kvvffq2br44"
 
 random_picture = ["https://i.imgur.com/yPVpqWM.jpg", "https://i.imgur.com/lgATe0t.jpg",
                   "https://i.imgur.com/vbqktrv.jpg", "https://i.imgur.com/pd5leLb.jpg",
-                  "https://i.imgur.com/uje85ic.jpg", "https://i.imgur.com/QnTJfmt.jpg"]
+                  "https://i.imgur.com/uje85ic.jpg", "https://i.imgur.com/QnTJfmt.jpg",
+                  "https://i.imgur.com/0mzIs1N.jpg", "https://i.imgur.com/Vt5Q1d4.jpg",
+                  "https://i.imgur.com/ZB1e21i.jpg","https://i.imgur.com/5pYIfw7.jpg"]
 
 def get_search_result( query, userid ) :
-  temp_num = random.randint(0,5)
+  temp_num = random.randint(0,9)
   flag = True
   defult_photo = random_picture[temp_num]
   useful_photo = ""

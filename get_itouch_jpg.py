@@ -28,7 +28,9 @@ def get_jpg( url_type ) :
   temp_count = 0
   random_picture = ["https://i.imgur.com/yPVpqWM.jpg", "https://i.imgur.com/lgATe0t.jpg",
                     "https://i.imgur.com/vbqktrv.jpg", "https://i.imgur.com/pd5leLb.jpg",
-                    "https://i.imgur.com/uje85ic.jpg", "https://i.imgur.com/QnTJfmt.jpg"]
+                    "https://i.imgur.com/uje85ic.jpg", "https://i.imgur.com/QnTJfmt.jpg",
+                    "https://i.imgur.com/0mzIs1N.jpg", "https://i.imgur.com/Vt5Q1d4.jpg",
+                    "https://i.imgur.com/ZB1e21i.jpg","https://i.imgur.com/5pYIfw7.jpg"]
   
   for i in titles :
     if ( ".JPG" in i.get("src") ) or ( ".png" in i.get("src") ) or ( ".jpg" in i.get("src") ) or ( ".PNG" in i.get("src") ) :
@@ -36,7 +38,7 @@ def get_jpg( url_type ) :
       target.append(i.get("src"))
 
   if temp_count < 1 :
-    temp_num = random.randint(0,5)
+    temp_num = random.randint(0,9)
     return random_picture[temp_num]
   else : 
     for i in target :    
