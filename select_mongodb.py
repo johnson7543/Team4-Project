@@ -147,7 +147,7 @@ def get_itouch( sel_client, data ):
         collection = db[select_col]
         data_db = collection.find()
         
-        for i in list(data_db)[0:2] :
+        for i in list(data_db)[0:4] :
             a_list.append(str(i.get('標題')))
             a_list.append(str(i.get('網址')))
             a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
@@ -155,7 +155,7 @@ def get_itouch( sel_client, data ):
         select_col = 'Itouch_徵才公告'
         collection = db[select_col]
         data_db = collection.find()
-        for i in list(data_db)[0:2]  :
+        for i in list(data_db)[0:4]  :
             a_list.append(str(i.get('標題')))
             a_list.append(str(i.get('網址')))
             a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
@@ -164,7 +164,7 @@ def get_itouch( sel_client, data ):
         collection = db[select_col]
         data_db = collection.find()
         #data_str = "".join(str(i.get('標題'))+'\n'+ str(i.get('網址'))+'\n\n' for i in list(data_db)[0:4])
-        for i in list(data_db)[0:4]  :
+        for i in list(data_db)[0:8]  :
             a_list.append(str(i.get('標題')))
             a_list.append(str(i.get('網址')))
             a_list.append(str(get_itouch_jpg.get_jpg(str(i.get('網址')))))
