@@ -110,9 +110,9 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             
         if 'classification' in data["result"]["metadata"]["intentName"] : # 如果要繼續分類的話  
             if 'next' in data["result"]["metadata"]["intentName"] : # flex menue 的操作結果回傳
-              data_str = test_mongodb.runMongo(responseJson, data)
-              my_contents = make_flex_scholarship.set_flex_scholarship_result(data_str)
+              data_str = test_mongodb.runMongo(responseJson, data)              
               if ( data["result"]["contexts"][0]["parameters"]["others"] != "all_data" ) :
+                my_contents = make_flex_scholarship.set_flex_scholarship_result(data_str)
                 message =  FlexSendMessage( alt_text='更多的獎學金查詢結果', contents = my_contents )
               else :
                 message = TextSendMessage( text = data_str ) # 回傳全部的獎學金 太多了只能用一般的text message
