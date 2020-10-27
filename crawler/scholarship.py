@@ -76,8 +76,11 @@ for i in range( 4, worksheet.max_row ) :
                                             
   #整理金額
   if scholarship_dict["金額"] == None :
-      scholarship_dict["金額"] = "面議"
+      scholarship_dict["金額"] = "0"
       scholarship_dict["金額"] = int(scholarship_dict["金額"])
+      if scholarship_dict["金額"] == 0 :
+          scholarship_dict["金額"] = "面議"
+      
   else :
       scholarship_dict["金額"] = int(scholarship_dict["金額"])
       
