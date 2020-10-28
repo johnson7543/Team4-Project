@@ -33,8 +33,8 @@ def start_func ( url_type ) :
     i.string = " ".join(i.string.split()) 
 
     itouch_json = { "標題" : i.string , "網址" : i.get('href') }
-    if itouch_json["標題"] == "" :
-        itouch_json["標題"] = "警急公告"
+    if itouch_json["標題"] == "None" :
+        itouch_json["標題"] = "緊急公告"
     list.append( itouch_json )
     
   return list
@@ -72,4 +72,6 @@ choosehref = "?ann_type=10" #實習就業
 temp_list = start_func( choosehref )
 for temp in temp_list :
     db.Itouch_實習就業.insert_one( temp )
+    
+
 
