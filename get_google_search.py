@@ -102,4 +102,4 @@ def get_search_result( query, userid ) :
   
   if ( not https ) :
     print("no https website, redo again with extending search")
-    get_search_result( query + " youtube", userid )
+    return get_search_result( query + " youtube", userid )
