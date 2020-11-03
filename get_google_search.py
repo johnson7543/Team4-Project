@@ -9,10 +9,13 @@ SEARCH_ENGINE_ID = "011581237149803790891:kvvffq2br44"
 
 random_picture = ["https://i.imgur.com/yPVpqWM.jpg", "https://i.imgur.com/lgATe0t.jpg",
                   "https://i.imgur.com/vbqktrv.jpg", "https://i.imgur.com/pd5leLb.jpg",
-                  "https://i.imgur.com/uje85ic.jpg", "https://i.imgur.com/QnTJfmt.jpg"]
+                  "https://i.imgur.com/uje85ic.jpg", "https://i.imgur.com/QnTJfmt.jpg",
+                  "https://i.imgur.com/0mzIs1N.jpg", "https://i.imgur.com/Vt5Q1d4.jpg",
+                  "https://i.imgur.com/ZB1e21i.jpg","https://i.imgur.com/5pYIfw7.jpg"]
 
 def get_search_result( query, userid ) :
-  temp_num = random.randint(0,5)
+  https = False
+  temp_num = random.randint(0,9)
   flag = True
   defult_photo = random_picture[temp_num]
   useful_photo = ""
@@ -37,7 +40,7 @@ def get_search_result( query, userid ) :
           temp = search_item["pagemap"]["metatags"][0]["image"]
         else: temp = ""
           
-        if ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp :
+        if ( ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp ) and not ".jpg?" in temp :
           result.append(temp)
         else : 
           result.append(defult_photo)
@@ -66,6 +69,7 @@ def get_search_result( query, userid ) :
     result.append(search_item.get("link"))
     print(search_item.get("link")[4])
     if search_item.get("link")[4] == 's' :
+      https = True
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           temp = search_item["pagemap"]["cse_image"][0]["src"]
@@ -73,7 +77,7 @@ def get_search_result( query, userid ) :
           temp = search_item["pagemap"]["metatags"][0]["image"]
         else: temp = ""
           
-        if ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp :
+        if ( ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp ) and not ".jpg?" in temp :
           result.append(temp)
         else : 
           result.append(defult_photo)
@@ -95,3 +99,7 @@ def get_search_result( query, userid ) :
     
     
       return make_flex_search_result.set_flex_search_result(result, userid)
+  
+  if ( not https ) :
+    print("no https website, redo again with extending search")
+    return get_search_result( query + " youtube", userid )
