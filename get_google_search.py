@@ -14,6 +14,7 @@ random_picture = ["https://i.imgur.com/yPVpqWM.jpg", "https://i.imgur.com/lgATe0
                   "https://i.imgur.com/ZB1e21i.jpg","https://i.imgur.com/5pYIfw7.jpg"]
 
 def get_search_result( query, userid ) :
+  https = False
   temp_num = random.randint(0,9)
   flag = True
   defult_photo = random_picture[temp_num]
@@ -68,6 +69,7 @@ def get_search_result( query, userid ) :
     result.append(search_item.get("link"))
     print(search_item.get("link")[4])
     if search_item.get("link")[4] == 's' :
+      https = True
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           temp = search_item["pagemap"]["cse_image"][0]["src"]
@@ -97,3 +99,7 @@ def get_search_result( query, userid ) :
     
     
       return make_flex_search_result.set_flex_search_result(result, userid)
+  
+  if ( not https ) :
+    print("no https website, redo again with extending search")
+    get_search_result( query + " youtube" )
