@@ -40,7 +40,7 @@ def get_search_result( query, userid ) :
           temp = search_item["pagemap"]["metatags"][0]["image"]
         else: temp = ""
           
-        if ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp :
+        if ( ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp ) and not ".jpg?" in temp :
           result.append(temp)
         else : 
           result.append(defult_photo)
