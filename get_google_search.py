@@ -38,6 +38,8 @@ def get_search_result( query, userid ) :
           temp = search_item["pagemap"]["cse_image"][0]["src"]
         elif ( search_item["pagemap"].get("metatags") and search_item["pagemap"]["metatags"][0].get("image") ) :
           temp = search_item["pagemap"]["metatags"][0]["image"]
+        elif ( search_item["pagemap"].get("metatags") and search_item["pagemap"]["metatags"][0].get("og:image") ) :
+          temp = search_item["pagemap"]["metatags"][0]["og:image"]
         else: temp = ""
           
         if ( ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp ) and not ".jpg?" in temp :
@@ -75,6 +77,8 @@ def get_search_result( query, userid ) :
           temp = search_item["pagemap"]["cse_image"][0]["src"]
         elif ( search_item["pagemap"].get("metatags") and search_item["pagemap"]["metatags"][0].get("image") ) :
           temp = search_item["pagemap"]["metatags"][0]["image"]
+        elif ( search_item["pagemap"].get("metatags") and search_item["pagemap"]["metatags"][0].get("og:image") ) :
+          temp = search_item["pagemap"]["metatags"][0]["og:image"]
         else: temp = ""
           
         if ( ".jpg" in temp  or ".png" in temp or ".JPG" in temp or ".PNG"  in temp ) and not ".jpg?" in temp :
