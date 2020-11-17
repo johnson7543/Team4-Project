@@ -1,5 +1,6 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-import urllib
+import urllib.request
+
 
 # 宣告一個排程
 sched = BlockingScheduler()
