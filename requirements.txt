@@ -8,3 +8,4 @@ pandas
 bs4
 lxml
 APScheduler==3.0.0
+urllib
