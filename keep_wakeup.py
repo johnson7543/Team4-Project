@@ -10,4 +10,7 @@ def scheduled_job():
     url = "https://linemongo.herokuapp.com/"
     connect = urllib.request.urlopen(url)
     
+    for key, value in connect.getheaders():
+      print(key, value)
+    
 sched.start()  # 啟動排程
