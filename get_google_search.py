@@ -36,7 +36,6 @@ def get_search_result( query, userid ) :
       # 為了提升精準度 避免搜尋張光正卻跑出醫美診所
       result.append(search_item.get("title"))
       result.append(search_item.get("link"))
-      print(search_item.get("link")[4])
       if ( search_item.get("pagemap") ) :
         if ( search_item["pagemap"].get("cse_image") ) :
           temp = search_item["pagemap"]["cse_image"][0]["src"]
@@ -73,7 +72,6 @@ def get_search_result( query, userid ) :
     result = []
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
-    print(search_item.get("link")[4])
     if search_item.get("link")[4] == 's' :
       https = True
       if ( search_item.get("pagemap") ) :
