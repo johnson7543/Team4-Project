@@ -1,5 +1,4 @@
-from flask import Flask, request, abort
-
+from flask import Flask, request, abort, render_template
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -14,7 +13,6 @@ import apiai
 import json
 import test_mongodb
 import get_confirm_message
-# import get_user_profile
 import get_google_search
 import template_message
 import Make_Bubble
@@ -44,6 +42,11 @@ def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
    #print(responseJson["result"]["parameters"]["action"])
    #print(type(responseJson["result"]["parameters"]["action"]))
    return responseJson
+
+# 簡易網頁
+@app.route("/")
+def home():
+    return render_template("home.html")
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
