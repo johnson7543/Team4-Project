@@ -14,6 +14,10 @@ random_picture = ["https://i.imgur.com/yPVpqWM.jpg", "https://i.imgur.com/lgATe0
                   "https://i.imgur.com/ZB1e21i.jpg","https://i.imgur.com/5pYIfw7.jpg"]
 
 def get_search_result( query, userid ) :
+  if '台' in query :
+    query = query.replace('台', '臺')
+    print(query)
+      
   https = False
   temp_num = random.randint(0,9)
   flag = True
@@ -65,7 +69,7 @@ def get_search_result( query, userid ) :
     
       return make_flex_search_result.set_flex_search_result(result, userid)
     
-  for i, search_item in enumerate(search_items, start=1) :  # 為了怕完全找不到有一樣字串存在的標題...
+  for i, search_item in enumerate(search_items, start=0) :  # 為了怕完全找不到有一樣字串存在的標題...
     result = []
     result.append(search_item.get("title"))
     result.append(search_item.get("link"))
