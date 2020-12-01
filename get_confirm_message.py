@@ -9,7 +9,7 @@ def get_message(data) :
       if "大醫生" in temp :
           temp = "大一生"      
       # temp_category = temp_category + temp + '\n' 
-      temp_category = " ".join(temp_category) + temp +'\n'
+      temp_category = "".join(temp_category) + temp +'\n'
       
   if ( data["result"]["parameters"]["ApplicationScore"] ) :
         temp_score = data["result"]["parameters"]["ApplicationScore"]
