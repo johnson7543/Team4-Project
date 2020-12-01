@@ -43,8 +43,8 @@ def get_jpg( url_type ) :
   else : 
     for i in target :    
       # print("https://ann.cycu.edu.tw" + i )
-	  if "https:" in i :
-	    return i 
+      if "https:" in i :  
+        return i 
       return "https://ann.cycu.edu.tw" + i
         
 # str_test = get_jpg( "https://ann.cycu.edu.tw/aa/frontend/AnnItem.jsp?sn=47735" )
