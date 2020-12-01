@@ -15,7 +15,7 @@ def get_message(data) :
   if ( data["result"]["parameters"]["number"]):
           temp_score = " ".join(temp_score) + str(data["result"]["parameters"]["number"])
     
-  temp_all = str(temp_category) + temp_score
+  temp_all = str(temp_category) + str(temp_score)
 
   if ( temp_all ) :   
     text = "這是你所想要篩選的條件嗎？" + "\n"
