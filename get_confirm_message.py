@@ -8,14 +8,15 @@ def get_message(data) :
           temp = "大四生"
       if "大醫生" in temp :
           temp = "大一生"      
-      temp_category = temp_category + temp + '\n' 
-        
+      # temp_category = temp_category + temp + '\n' 
+      temp_category = " ".join(temp_category) + temp +'\n'
+      
   if ( data["result"]["parameters"]["ApplicationScore"] ) :
         temp_score = data["result"]["parameters"]["ApplicationScore"]
   if ( data["result"]["parameters"]["number"]):
           temp_score = " ".join(temp_score) + str(data["result"]["parameters"]["number"])
     
-  temp_all = str(temp_category) + str(temp_score)
+  temp_all = str(temp_category) + temp_score
 
   if ( temp_all ) :   
     text = "這是你所想要篩選的條件嗎？" + "\n"
