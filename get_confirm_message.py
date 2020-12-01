@@ -15,7 +15,11 @@ def get_message(data) :
         temp_score = data["result"]["parameters"]["ApplicationScore"]
   if ( data["result"]["parameters"]["number"]):
           temp_score = " ".join(temp_score) + str(data["result"]["parameters"]["number"])
-    
+  
+  print(type(temp_category)) 
+  print(temp_category)
+  print(type(temp_score)) 
+  print(temp_score)
   temp_all = str(temp_category) + temp_score
 
   if ( temp_all ) :   
