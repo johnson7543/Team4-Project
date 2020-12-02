@@ -27,14 +27,14 @@ ai = apiai.ApiAI('e487ae398c804714a2b714262d78a191')
 
 # Channel Access Token
 # 初始化一個LineBotApi的物件
-# 原本的
-line_bot_api = LineBotApi('l8HIzKnuKYtgSCLb5VG2VcBPoaEM3xWnDZQcGwoGkBWnpV8aji5gPeKDP1kTy/CxmskDdaND9kuV05D1GDEcuUWkwnSmv2QewSuSdU/4lZtZI188/NS9YA5vVEEjI0Zo1YBa9y/pc77fUcZlQTx7EAdB04t89/1O/w1cDnyilFU=')
-# 測試的 line_bot_api = LineBotApi('Um2jzO1uJTdSoP53n1w3fQzklfU3cX2Hik2dKMkLOLUQUfJUyW/Lwn19IEL3YnEKdlQubAAtOABkvFJ3VRIskzj39RVr/s7xvY9jaGhiLIMBoXZQgrQ8Asp4MINqLqLAI5SJw/U276iiUPB9cO/7SQdB04t89/1O/w1cDnyilFU=')
+# 原本的 line_bot_api = LineBotApi('l8HIzKnuKYtgSCLb5VG2VcBPoaEM3xWnDZQcGwoGkBWnpV8aji5gPeKDP1kTy/CxmskDdaND9kuV05D1GDEcuUWkwnSmv2QewSuSdU/4lZtZI188/NS9YA5vVEEjI0Zo1YBa9y/pc77fUcZlQTx7EAdB04t89/1O/w1cDnyilFU=')
+# 測試的 
+line_bot_api = LineBotApi('Um2jzO1uJTdSoP53n1w3fQzklfU3cX2Hik2dKMkLOLUQUfJUyW/Lwn19IEL3YnEKdlQubAAtOABkvFJ3VRIskzj39RVr/s7xvY9jaGhiLIMBoXZQgrQ8Asp4MINqLqLAI5SJw/U276iiUPB9cO/7SQdB04t89/1O/w1cDnyilFU=')
 
 # Channel Secret
-# 原本的
-handler = WebhookHandler('a86154a51569e180a823c36cb81fa05d')
-# 測試的 handler = WebhookHandler('a26e608e799406f08f7ddce49b1238a7')
+# 原本的 handler = WebhookHandler('a86154a51569e180a823c36cb81fa05d')
+# 測試的 
+handler = WebhookHandler('a26e608e799406f08f7ddce49b1238a7')
 
 def parse_user_text(text): #傳訊息給dialogflow並得到解析後的答案
    request = ai.text_request()
