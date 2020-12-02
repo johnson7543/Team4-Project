@@ -37,6 +37,7 @@ def runMongo(response, data):
         elif( response[2] != "公告" ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory"])
           
+          
         mydict = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                    "user id" : userid,
                    "user name" : profile_name,
