@@ -91,6 +91,7 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     
     if ( data["result"]["parameters"] ) :
         responseJson.append(data["result"]["parameters"]["Target"])  # '獎學金' or 'Itouch'
+        responseJson.append(data["result"]["metadata"]["intentName"])  # '意圖名稱'
         test_mongodb.runMongo(responseJson, data)
         
         if ( data["result"]["fulfillment"] ) :
