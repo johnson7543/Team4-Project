@@ -151,6 +151,8 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             fulfi_text = data["result"]['fulfillment']["speech"]        
             message = TextSendMessage( text = fulfi_text )
         else :
+            responseJson.append("Search")
+            test_mongodb.runMongo(responseJson, data)
             my_contents = get_google_search.get_search_result(event.message.text, event.source.user_id)
             message = FlexSendMessage( alt_text='令人意外的結果', contents = my_contents )
          
