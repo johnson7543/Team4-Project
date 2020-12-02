@@ -32,6 +32,17 @@ def runMongo(response, data):
         profile_photo = profile.picture_url
         profile_name = profile.display_name
         
+        mydict_search = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
+                          "user id" : userid,
+                          "user name" : profile_name,
+                           "user photo" : profile_photo,
+                           "user text" : response[1]
+                        }
+            
+        if ( response[2] == 'Search' ) :
+          collection.insert(mydict_search) 
+          return
+        
         mydict_1 = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                      "user id" : userid,
                      "user name" : profile_name,
