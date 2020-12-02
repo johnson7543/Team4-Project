@@ -47,7 +47,8 @@ def runMongo(response, data):
                    "info" : info
                   }
         
-        collection.insert(mydict) 
+        if( response[2] == '查詢獎學金1' or response[2] == '查詢獎學金2' or response[2] == 'Ask Itouch 1' ) :
+            collection.insert(mydict) 
         
         return select_mongodb.seldata(sel_client, response, data) # select from db.collection
     
