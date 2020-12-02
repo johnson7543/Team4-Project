@@ -88,13 +88,13 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     responseJson.append(event.source.user_id)
     responseJson.append(event.message.text)
     print(data)
-    test_mongodb.runMongo(responseJson, data)
     
     if ( data["result"]["parameters"] ) :
-        responseJson.append(data["result"]["parameters"]["Target"])  # '獎學金'
-    
+        responseJson.append(data["result"]["parameters"]["Target"])  # '獎學金' or 'Itouch'
+        test_mongodb.runMongo(responseJson, data)
+        
         if ( data["result"]["fulfillment"] ) :
-            fulfi_text = data["result"]['fulfillment']["speech"]
+            fulfi_text = data["result"]['fulfillment']["speech"]           
             if "查詢獎學金2" == data["result"]["metadata"]["intentName"] :
               fulfi_text = fulfi_text + get_confirm_message.get_message(data) # add confirm message
         else :
