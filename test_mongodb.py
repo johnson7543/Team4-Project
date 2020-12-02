@@ -37,10 +37,11 @@ def runMongo(response, data):
                      "user name" : profile_name,
                      "user photo" : profile_photo,
                      "user text" : response[1],
-                     "target": response[2]
+                     "target": response[2],
+                     "intent": response[3]
                    }
             
-        if ( response[3] == '查詢獎學金1' or response[2] == 'Ask Itouch 1' ) :
+        if ( response[3] == '查詢獎學金1' or response[3] == 'Ask Itouch 1' ) :
           collection.insert(mydict_1) 
           return
         
