@@ -40,7 +40,7 @@ def runMongo(response, data):
                      "target": response[2]
                    }
             
-        if ( response[2] == '查詢獎學金1' or response[2] == 'Ask Itouch 1' ) :
+        if ( response[3] == '查詢獎學金1' or response[2] == 'Ask Itouch 1' ) :
           collection.insert(mydict_1) 
           return
         
@@ -59,10 +59,10 @@ def runMongo(response, data):
                      "info" : info
                    }
         
-        if ( response[2] == '查詢獎學金2' ) :
+        if ( response[3] == '查詢獎學金2' ) :
           collection.insert(mydict_2) 
           return
         
-        if ( '查詢獎學金2 - yes' in response[2] or 'Ask Itouch 2' in response[2] or '查詢獎學金2 - classification - next' in response[2] ) :
+        if ( response[3] == '查詢獎學金2 - yes' or response[3] == 'Ask Itouch 2' or response[3] == '查詢獎學金2 - classification - next' ) :
           return select_mongodb.seldata(sel_client, response, data) # select from db.collection
     
