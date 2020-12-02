@@ -35,8 +35,9 @@ def runMongo(response, data):
         mydict_search = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                           "user id" : userid,
                           "user name" : profile_name,
-                           "user photo" : profile_photo,
-                           "user text" : response[1]
+                          "user photo" : profile_photo,
+                          "user text" : response[1],
+                          "intent": response[2]  # 'Search'
                         }
             
         if ( response[2] == 'Search' ) :
