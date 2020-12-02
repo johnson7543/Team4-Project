@@ -63,6 +63,6 @@ def runMongo(response, data):
           collection.insert(mydict_2) 
           return
         
-        if ( 'yes' in response[2] or 'Ask Itouch 2' in response[2] ) :
+        if ( '查詢獎學金2 - yes' in response[2] or 'Ask Itouch 2' in response[2] or '查詢獎學金2 - classification - next' in response[2] ) :
           return select_mongodb.seldata(sel_client, response, data) # select from db.collection
     
