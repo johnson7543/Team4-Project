@@ -44,11 +44,12 @@ def runMongo(response, data):
           collection.insert(mydict_1) 
           return
         
+        info = ""
         if ( response[2] != "公告" and data["result"]["contexts"][0]["parameters"].get("ApplicationCategory.original") ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"])
         elif( response[2] != "公告" and data["result"]["contexts"][0]["parameters"].get("ApplicationCategory") ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory"])
-          
+               
         mydict_2 = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
                      "user id" : userid,
                      "user name" : profile_name,
