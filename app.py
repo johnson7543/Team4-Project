@@ -88,11 +88,14 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
     responseJson.append(event.source.user_id)
     responseJson.append(event.message.text)
     print(data)
-    if ( data["result"]["parameters"] ) :
-        responseJson.append(data["result"]["parameters"]["Target"])  # '獎學金'
     
+    if ( data["result"]["parameters"] ) :
+        responseJson.append(data["result"]["parameters"]["Target"])  # '獎學金' or 'Itouch'
+        responseJson.append(data["result"]["metadata"]["intentName"])  # '意圖名稱'
+        test_mongodb.runMongo(responseJson, data)
+        
         if ( data["result"]["fulfillment"] ) :
-            fulfi_text = data["result"]['fulfillment']["speech"]
+            fulfi_text = data["result"]['fulfillment']["speech"]           
             if "查詢獎學金2" == data["result"]["metadata"]["intentName"] :
               fulfi_text = fulfi_text + get_confirm_message.get_message(data) # add confirm message
         else :
@@ -148,6 +151,8 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             fulfi_text = data["result"]['fulfillment']["speech"]        
             message = TextSendMessage( text = fulfi_text )
         else :
+            responseJson.append("Search")
+            test_mongodb.runMongo(responseJson, data)
             my_contents = get_google_search.get_search_result(event.message.text, event.source.user_id)
             message = FlexSendMessage( alt_text='令人意外的結果', contents = my_contents )
          

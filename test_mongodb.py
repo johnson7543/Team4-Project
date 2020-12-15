@@ -32,23 +32,50 @@ def runMongo(response, data):
         profile_photo = profile.picture_url
         profile_name = profile.display_name
         
-        if ( response[2] != "公告" and data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"] ) :
+        mydict_search = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
+                          "user id" : userid,
+                          "user name" : profile_name,
+                          "user photo" : profile_photo,
+                          "user text" : response[1],
+                          "intent": response[2]  # 'Search'
+                        }
+            
+        if ( response[2] == 'Search' ) :
+          collection.insert(mydict_search) 
+          return
+        
+        mydict_1 = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
+                     "user id" : userid,
+                     "user name" : profile_name,
+                     "user photo" : profile_photo,
+                     "user text" : response[1],
+                     "target": response[2],
+                     "intent": response[3]
+                   }
+            
+        if ( response[3] == '查詢獎學金1' or response[3] == 'Ask Itouch 1' ) :
+          collection.insert(mydict_1) 
+          return
+        
+        info = ""
+        if ( response[2] != "公告" and data["result"]["contexts"][0]["parameters"].get("ApplicationCategory.original") ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory.original"])
-        elif( response[2] != "公告" ) :
+        elif( response[2] != "公告" and data["result"]["contexts"][0]["parameters"].get("ApplicationCategory") ) :
           info = str(data["result"]["contexts"][0]["parameters"]["ApplicationCategory"])
-          
-          
-        mydict = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
-                   "user id" : userid,
-                   "user name" : profile_name,
-                   "user photo" : profile_photo,
-                   "user text" : response[1],
-                   "target": response[2],
-                   "info" : info
-                  }
+               
+        mydict_2 = { "time": datetime.now(pytz.timezone('Asia/Taipei')).strftime('%Y-%m-%d %H:%M:%S'),
+                     "user id" : userid,
+                     "user name" : profile_name,
+                     "user photo" : profile_photo,
+                     "user text" : response[1],
+                     "target": response[2],
+                     "info" : info
+                   }
         
-        if( response[2] == '查詢獎學金1' or response[2] == '查詢獎學金2' or response[2] == 'Ask Itouch 1' ) :
-            collection.insert(mydict) 
+        if ( response[3] == '查詢獎學金2' ) :
+          collection.insert(mydict_2) 
+          return
         
-        return select_mongodb.seldata(sel_client, response, data) # select from db.collection
+        if ( response[3] == '查詢獎學金2 - yes' or response[3] == 'Ask Itouch 2' or response[3] == '查詢獎學金2 - classification - next' ) :
+          return select_mongodb.seldata(sel_client, response, data) # select from db.collection
     
