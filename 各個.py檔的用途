@@ -26,4 +26,5 @@ crawler program內兩個.py     資料爬蟲程式(公告、獎學金)
 
 
 #設定檔
-Procfile                     Heroku設定檔
+Procfile                     Heroku執行設定檔
+requirements.txt             Heroku需要安裝的import檔
