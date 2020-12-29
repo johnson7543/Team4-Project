@@ -8,14 +8,14 @@ keep_awake.py               讓heorku不要睡著
 #被呼叫的檔案
 get_confirm_message.py      製作篩選確認訊息
 get_google_search.py        google search API
-get_itouch_jpg.py           抓取ioutch公告的圖片
-get_user_profile.py         抓取使用者(Line)資訊
+get_itouch_jpg.py           輸入網址就會抓取該網址之ioutch公告圖片
+get_user_profile.py         抓取使用者的(Line)資訊
 
-Bubble.py                   結果的flex_message模板
+Bubble.py                   查詢結果的flex_message模板
 Make_Bubble.py              製作itouch公告的flex_message
 make_flex_scholarship.py    製作獎學金結果的flex_message
 make_flex_search_result.py  製作google_search結果的flex_message
-template_message.py         獎學金按鈕模板
+template_message.py         獎學金額外篩選的按鈕模板
 
 test_mongodb.py             將使用者紀錄存入資料庫以及連接要抓取結果的資料庫
 select_mongodb.py           從資料庫抓取資料
