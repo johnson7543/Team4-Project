@@ -4,6 +4,7 @@
 app.py                      主程式
 keep_awake.py               讓heorku不要睡著
 
+
 #被呼叫的檔案
 get_confirm_message.py      製作篩選確認訊息
 get_google_search.py        google search API
@@ -21,5 +22,8 @@ select_mongodb.py           從資料庫抓取資料
 
 
 #使用heroku排程執行的當案
-crawler program 中的兩個.py
-皆為爬蟲程式(公告、獎學金)
+crawler program內兩個.py     資料爬蟲程式(公告、獎學金)
+
+
+#設定檔
+Procfile                     Heroku設定檔
