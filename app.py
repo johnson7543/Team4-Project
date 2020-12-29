@@ -70,8 +70,6 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)#每當收到LINE的訊息事件MessageEvent，且是一則文字訊息時 ，就執行下列程式碼。
 def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"標籤。
-    msg = "呵呵呵"
-    egg = '-' + '\n' + msg + '\n\n\n\n' + "會看到這句話的你... 不是碰到bug，" + '\n\n' + "就是他媽有夠閒。"
     # event長這樣是一個json物件
     #    event = {"reply_token":"就是代表reply_token的一串亂碼", 
     #         "type":"message",
@@ -108,16 +106,8 @@ def handle_message(event):#此函數接收LINE傳過來的資訊並貼上"event"
             data_str = test_mongodb.runMongo(responseJson, data) # 嘗試把dialogflow回傳的存入mongodb
             # 以及從db拿取獎學金資訊、研究所資訊...etc(暫時)
             # 然而db拿出來的資料有我們不要的東西 e.g. Obj id...
-            wtf = ""
-            for temp in data["result"]["contexts"][0]["parameters"]["ApplicationCategory"] :
-              if "高中" in temp :
-                wtf = egg
-            
-            if ( wtf ) :
-              message = TextSendMessage( text = wtf ) 
-            else :
-              my_contents = make_flex_scholarship.set_flex_scholarship_result(data_str)
-              message =  FlexSendMessage( alt_text='獎學金查詢結果', contents = my_contents )
+            my_contents = make_flex_scholarship.set_flex_scholarship_result(data_str)
+            message =  FlexSendMessage( alt_text='獎學金查詢結果', contents = my_contents )
               
             
         if 'classification' in data["result"]["metadata"]["intentName"] : # 如果要繼續分類的話  
