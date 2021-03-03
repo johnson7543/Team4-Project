@@ -1,4 +1,4 @@
-# Team4-Project CYCU Assistant
+# Team4-Project (CYCU Assistant)
 
 王昱凱 <johnson7543@cycu.org.tw>
 
