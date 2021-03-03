@@ -33,7 +33,7 @@
   <li>The end-user sees or hears the response.</li>
 </ol>
 
-## 系統安裝指南:
+## 系統安裝指南
 1. 請到 Line 官方的 Line Developers 申請 Line Message API 的功能,取得一個自己的聊天機器人 channel
 (channel的詳細內容有包含Channel secret、Channel access token 此兩項數據為重要資料,將會影響整個機器人是否可使用)。
 
