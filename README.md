@@ -1,6 +1,6 @@
 # Team4-Project (CYCU Assistant)
 
-### <a href="https://www.youtube.com/watch?v=UNY23oZNyN4">成品展示影片</a>
+### <a href="https://youtu.be/MG7tWFN1kK8">成品展示影片</a>
 
 王昱凱 <johnson7543@cycu.org.tw>
 
