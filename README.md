@@ -9,8 +9,8 @@
 
 ### <a href="https://youtu.be/MG7tWFN1kK8">成品展示影片</a>
 
-## Dialogflow運作流程
 [![](https://i.imgur.com/Vg0GtuB.jpg)](https://i.imgur.com/Vg0GtuB.jpg "架構圖")
+## Dialogflow運作流程
 <ol>
   <li>The end-user types or speaks an expression.</li>
   <li>Dialogflow matches the end-user expression to an intent and extracts parameters.</li>
