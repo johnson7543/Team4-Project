@@ -58,7 +58,7 @@
 #### select_mongodb.py           
 >從資料庫抓取資料
 
-## 使用heroku排程執行的當案
+## 使用heroku排程執行的檔案
 #### crawler program內兩個.py     
 >資料爬蟲程式(公告、獎學金)
 
