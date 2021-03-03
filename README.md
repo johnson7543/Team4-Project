@@ -1,12 +1,14 @@
 # Team4-Project (CYCU Assistant)
 
-### <a href="https://youtu.be/MG7tWFN1kK8">成品展示影片</a>
-
 王昱凱 <johnson7543@cycu.org.tw>
 
 張哲睿 <s10627217@cycu.org.tw>
 
 林佑任 <qwer88411@cycu.org.tw>
+
+### <a href="https://youtu.be/MG7tWFN1kK8">成品展示影片</a>
+
+[![](https://i.imgur.com/bvz4W5D.jpg)](https://i.imgur.com/bvz4W5D.jpg "架構圖")
 
 <ol>
   <li>The end-user types or speaks an expression.</li>
